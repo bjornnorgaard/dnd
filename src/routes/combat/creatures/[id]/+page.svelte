@@ -4,6 +4,8 @@
     import PageSection from "$lib/components/PageSection.svelte";
     import { db } from "$lib/utils/database";
     import type { Creature } from "$lib/types/creature";
+    import SpellSlotTracker from "$lib/components/SpellSlotTracker.svelte";
+    import { Class } from "$lib/constants/classes";
 
     export let data;
     const player = liveQuery(async () => await db.creatures.get(data.id));
@@ -14,8 +16,11 @@
             return;
         }
 
+        const selectedClass = Class[e.target.class.value as keyof typeof Class];
+
         const changes: UpdateSpec<Creature> = {
             name: e.target.name.value,
+            class: selectedClass,
             level: Number(e.target.level.value),
             current_hit_points: Number(e.target.current_hit_points.value),
             hit_points: Number(e.target.hit_points.value),
@@ -59,18 +64,33 @@
     {@const p = $player}
 
     <PageWrapper title={p.name} desc="Edit character attributes and details">
-        <PageSection>
+        <PageSection title="Spell Slots">
+            <SpellSlotTracker/>
+        </PageSection>
+
+        <PageSection title="Details">
             <form class="space-y-4" on:submit|preventDefault={(e) => submitPlayer(e)}>
                 <div class="row">
-                    <label for="name">
+                    <label for="name" class="basis-2/5">
                         <span>Name</span>
                         <input class="input" type="text" id="name" autocomplete="off" value={p.name} placeholder="John Doe">
                     </label>
 
                     {#if p.is_player}
-                        <label for="level" class="basis-1/3 md:basis-1/4">
+                        <label for="level" class="basis-1/5">
                             <span>Level</span>
                             <input class="input" type="number" id="level" autocomplete="off" value={p.level}>
+                        </label>
+                    {/if}
+
+                    {#if p.is_player}
+                        <label for="class" class="basis-2/5">
+                            <span>Class</span>
+                            <select value={p.class} id="class" class="select">
+                                {#each Object.entries(Class) as [k,v]}
+                                    <option value={k}>{v}</option>
+                                {/each}
+                            </select>
                         </label>
                     {/if}
                 </div>

@@ -1,3 +1,5 @@
+import { Class } from "$lib/constants/classes";
+
 export interface Creature {
     // Custom Fields
     id: string;
@@ -5,6 +7,7 @@ export interface Creature {
     current_hit_points: number;
     initiative: number;
     level: number;
+    class: Class;
 
     // API Fields
     slug: string;
@@ -72,6 +75,7 @@ export function defaultCreature(): Creature {
         current_hit_points: 0,
         initiative: 0,
         level: 1,
+        class: Class.Bard,
         slug: "",
         desc: "",
         name: "",
