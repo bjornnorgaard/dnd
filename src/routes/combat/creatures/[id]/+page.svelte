@@ -16,6 +16,7 @@
 
         const changes: UpdateSpec<Creature> = {
             name: e.target.name.value,
+            level: Number(e.target.level.value),
             current_hit_points: Number(e.target.current_hit_points.value),
             hit_points: Number(e.target.hit_points.value),
             armor_class: Number(e.target.armor_class.value),
@@ -60,10 +61,19 @@
     <PageWrapper title={p.name} desc="Edit character attributes and details">
         <PageSection>
             <form class="space-y-4" on:submit|preventDefault={(e) => submitPlayer(e)}>
-                <label for="name">
-                    <span>Name</span>
-                    <input class="input" type="text" id="name" autocomplete="off" value={p.name} placeholder="John Doe">
-                </label>
+                <div class="row">
+                    <label for="name">
+                        <span>Name</span>
+                        <input class="input" type="text" id="name" autocomplete="off" value={p.name} placeholder="John Doe">
+                    </label>
+
+                    {#if p.is_player}
+                        <label for="level" class="basis-1/3 md:basis-1/4">
+                            <span>Level</span>
+                            <input class="input" type="number" id="level" autocomplete="off" value={p.level}>
+                        </label>
+                    {/if}
+                </div>
 
                 <div class="row">
                     <label for="current_hit_points">

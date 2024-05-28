@@ -4,6 +4,7 @@ export interface Creature {
     is_player: number;
     current_hit_points: number;
     initiative: number;
+    level: number;
 
     // API Fields
     slug: string;
@@ -19,28 +20,34 @@ export interface Creature {
     hit_points: number;
     hit_dice: string;
     speed: Speed;
+
     strength: number;
     dexterity: number;
     constitution: number;
     intelligence: number;
     wisdom: number;
     charisma: number;
+
     strength_save: number;
     dexterity_save: number;
     constitution_save: number;
     intelligence_save: number;
     wisdom_save: number;
     charisma_save: number;
+
     perception: number;
     skills: Skills;
+
     damage_vulnerabilities: string;
     damage_resistances: string;
     damage_immunities: string;
     condition_immunities: string;
+
     senses: string;
     languages: string;
     challenge_rating: string;
     cr: number;
+
     actions: Action[];
     bonus_actions: any;
     reactions: Reaction[];
@@ -48,6 +55,7 @@ export interface Creature {
     legendary_actions: LegendaryAction[];
     special_abilities: SpecialAbility[];
     spell_list: any[];
+
     page_no: number;
     environments: string[];
     img_main: string;
@@ -63,6 +71,7 @@ export function defaultCreature(): Creature {
         is_player: 0,
         current_hit_points: 0,
         initiative: 0,
+        level: 1,
         slug: "",
         desc: "",
         name: "",
