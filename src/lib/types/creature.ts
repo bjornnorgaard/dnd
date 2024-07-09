@@ -1,4 +1,5 @@
 import { Class } from "$lib/constants/classes";
+import { defaultSpellCharges, type SpellCharges } from "$lib/types/spell-charges";
 
 export interface Creature {
     // Custom Fields
@@ -8,6 +9,7 @@ export interface Creature {
     initiative: number;
     level: number;
     class: Class;
+    spellCharges: SpellCharges[]
 
     // API Fields
     slug: string;
@@ -76,6 +78,7 @@ export function defaultCreature(): Creature {
         initiative: 0,
         level: 1,
         class: Class.Bard,
+        spellCharges: defaultSpellCharges(),
         slug: "",
         desc: "",
         name: "",
