@@ -12,9 +12,6 @@
         rounded=""
         border="border-t-2 border-surface-900"
         class="w-full bg-surface-100-800-token">
-    <!--    <TabAnchor>-->
-    <!--        <NavSearchButton/>-->
-    <!--    </TabAnchor>-->
     {#each navRoute as r}
         {#if r.show}
             <TabAnchor href={r.route} selected={$page.url.pathname.includes(r.route) && r.route !== "/"}>
