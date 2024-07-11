@@ -16,13 +16,15 @@
     <!--        <NavSearchButton/>-->
     <!--    </TabAnchor>-->
     {#each navRoute as r}
-        <TabAnchor href={r.route} selected={$page.url.pathname.includes(r.route) && r.route !== "/"}>
-            <svelte:fragment slot="lead">
-                <div class="flex justify-center">
-                    <svelte:component this={r.icon}/>
-                </div>
-            </svelte:fragment>
-            <span>{r.label}</span>
-        </TabAnchor>
+        {#if r.show}
+            <TabAnchor href={r.route} selected={$page.url.pathname.includes(r.route) && r.route !== "/"}>
+                <svelte:fragment slot="lead">
+                    <div class="flex justify-center">
+                        <svelte:component this={r.icon}/>
+                    </div>
+                </svelte:fragment>
+                <span>{r.label}</span>
+            </TabAnchor>
+        {/if}
     {/each}
 </TabGroup>
