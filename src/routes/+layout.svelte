@@ -1,6 +1,6 @@
 <script lang="ts">
     import "../app.pcss";
-    import { AppShell, storePopup } from '@skeletonlabs/skeleton';
+    import { storePopup } from '@skeletonlabs/skeleton';
     import NavSide from "$lib/components/NavSide.svelte";
     import { statblock } from "$lib/stores/statblock";
     import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
@@ -21,28 +21,22 @@
 
 <GlobalSearch/>
 
-<AppShell>
-    <svelte:fragment slot="sidebarLeft">
-        <div class="hidden h-screen md:block">
-            <NavSide/>
-        </div>
-    </svelte:fragment>
+<div class="flex">
+    <div class="fixed hidden h-full md:block">
+        <NavSide/>
+    </div>
 
-    <main class="h-full">
+    <main class="h-full w-full">
         <slot/>
     </main>
 
-    <svelte:fragment slot="sidebarRight">
-        {#if $statblock.isOpen}
-            <div class="w-96 p-4" in:slide={{axis: "x", duration: 300}} out:slide={{axis: "x", duration: 300}}>
-                <CreatureStatblock creature={$statblock.creature}/>
-            </div>
-        {/if}
-    </svelte:fragment>
-
-    <svelte:fragment slot="footer">
-        <div class="md:hidden">
-            <NavBottom/>
+    {#if $statblock.isOpen}
+        <div class="fixed right-0 w-96 p-4" in:slide={{axis: "x", duration: 300}} out:slide={{axis: "x", duration: 300}}>
+            <CreatureStatblock creature={$statblock.creature}/>
         </div>
-    </svelte:fragment>
-</AppShell>
+    {/if}
+
+    <div class="fixed bottom-0 w-full md:hidden">
+        <NavBottom/>
+    </div>
+</div>
