@@ -45,7 +45,6 @@
                 <th>AC</th>
                 <th>Type</th>
                 <th>Size</th>
-                <th>Alignment</th>
             </TableHead>
             <TableBody>
                 {#each creatures as c}
@@ -55,7 +54,6 @@
                         <td>{c.armor_class}</td>
                         <td>{c.type}</td>
                         <td>{c.size}</td>
-                        <td>{c.alignment}</td>
                     </tr>
                 {/each}
             </TableBody>
