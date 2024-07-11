@@ -14,4 +14,3 @@ export const creatureIndex = buildCreatureIndex();
 
 export const spells = loadSpells();
 export const spellIndex = buildSpellIndex();
-

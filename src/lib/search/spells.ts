@@ -18,7 +18,7 @@ export function buildSpellIndex() {
     });
 
     const end = performance.now();
-    console.log(`Built spell index in ${end - start} ms`);
+    console.log(`Built spell index in ${(end - start).toFixed(2)} ms`);
     return flexIndex;
 }
 

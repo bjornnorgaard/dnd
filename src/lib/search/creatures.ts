@@ -18,7 +18,7 @@ export function buildCreatureIndex() {
     });
 
     const end = performance.now();
-    console.log(`Built creature index in ${end - start} ms`);
+    console.log(`Built creature index in ${(end - start).toFixed(2)} ms`);
     return flexIndex;
 }
 
