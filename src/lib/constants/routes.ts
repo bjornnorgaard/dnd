@@ -18,4 +18,6 @@ export const routes = {
 
     characters: () => "/sheets",
     characters_slug: (slug: string) => `/sheets/${slug}`,
+
+    settings: () => "/settings",
 }
