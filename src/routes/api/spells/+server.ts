@@ -4,7 +4,7 @@ import { searchSpells } from "$lib/search/spells";
 
 export const GET = ({ url }) => {
     const query = url.searchParams.get("query") ?? "a";
-    let limit = Number(url.searchParams.get("limit")) ?? 5;
+    const limit = Number(url.searchParams.get("limit")) ?? 5;
     const offset = Number(url.searchParams.get("offset")) ?? 0;
 
     const results: Spell[] = searchSpells(query, limit, offset);
