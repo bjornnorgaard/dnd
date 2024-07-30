@@ -22,7 +22,7 @@
         <StatblockDivider/>
 
         <br>
-        <p class="pt-2 indent-4">{data.spell.desc}</p>
+        <p class="pt-2 indent-4">{@html data.spell.desc.toString().replaceAll("\n", "<br>")}</p>
 
         {#if data.spell.higher_level}
             <br>
