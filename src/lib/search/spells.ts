@@ -5,7 +5,7 @@ import { routes } from "$lib/constants/routes";
 import { siteIndex, spellIndex, spells } from "../../hooks.server";
 
 export function spellSearchString(c: Spell): string {
-    return `${c.dnd_class} ${c.spell_level} ${c.name}`;
+    return `c:${c.dnd_class} l:${c.spell_level} ${c.name}`;
 }
 
 export function buildSpellIndex() {
