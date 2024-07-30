@@ -13,15 +13,13 @@
         border="border-t-2 border-surface-900"
         class="w-full bg-surface-100-800-token">
     {#each navRoute as r}
-        {#if r.show}
-            <TabAnchor href={r.route} selected={$page.url.pathname.includes(r.route) && r.route !== "/"}>
-                <svelte:fragment slot="lead">
-                    <div class="flex justify-center">
-                        <svelte:component this={r.icon}/>
-                    </div>
-                </svelte:fragment>
-                <span>{r.label}</span>
-            </TabAnchor>
-        {/if}
+        <TabAnchor href={r.route} selected={$page.url.pathname.includes(r.route) && r.route !== "/"}>
+            <svelte:fragment slot="lead">
+                <div class="flex justify-center">
+                    <svelte:component this={r.icon}/>
+                </div>
+            </svelte:fragment>
+            <span>{r.label}</span>
+        </TabAnchor>
     {/each}
 </TabGroup>

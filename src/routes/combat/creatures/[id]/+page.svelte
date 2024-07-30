@@ -5,7 +5,6 @@
     import { db } from "$lib/utils/database";
     import type { Creature } from "$lib/types/creature";
     import { Class } from "$lib/constants/classes";
-    import { defaultSpellCharges } from "$lib/types/spell-charges.js";
 
     export let data;
     const player = liveQuery(async () => await db.creatures.get(data.id));
@@ -17,17 +16,11 @@
         }
 
         const selectedClass = Class[e.target.class.value as keyof typeof Class];
-        let spellCharges = $player.spellCharges
-
-        if (!$player.spellCharges) {
-            spellCharges = defaultSpellCharges();
-        }
 
         const changes: UpdateSpec<Creature> = {
             name: e.target.name.value,
             class: selectedClass,
             level: Number(e.target.level.value),
-            spellCharges: spellCharges,
             current_hit_points: Number(e.target.current_hit_points.value),
             hit_points: Number(e.target.hit_points.value),
             armor_class: Number(e.target.armor_class.value),
@@ -68,12 +61,7 @@
     <p>No player found</p>
 {:else}
     {@const p = $player}
-
     <PageWrapper title={p.name} desc="Edit character attributes and details">
-        <!--        <PageSection title="Spell Slots">-->
-        <!--            <SpellSlotTracker/>-->
-        <!--        </PageSection>-->
-
         <PageSection title="Details">
             <form class="space-y-4" on:submit|preventDefault={(e) => submitPlayer(e)}>
                 <div class="row">
