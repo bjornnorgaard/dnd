@@ -9,7 +9,6 @@
     import { ArrowLeftCircle, ArrowRightCircle, Dices, FileWarning, PlayCircle, Skull, StopCircle } from "lucide-svelte";
     import { rollDice } from "$lib/utils/dice-roller";
     import { flip } from "svelte/animate";
-    import { statblock } from "$lib/stores/statblock";
     import { hitPointsColor } from "$lib/utils/hit-points-color";
     import PopupInput from "$lib/components/PopupInput.svelte";
     import Table from "$lib/components/Table.svelte";
@@ -165,8 +164,7 @@
                 <TableBody>
                     {#if $creatures}
                         {#each $creatures.sort((a, b) => b.initiative - a.initiative) as p, i (p.id)}
-                            <tr on:click={() => statblock.open(p)}
-                                class="cursor-pointer"
+                            <tr class="cursor-pointer"
                                 class:table-row-checked={activeCombatant === i} animate:flip={{duration: 300}}
                                 class:line-through={p.current_hit_points <= 0}
                                 class:text-gray-500={p.current_hit_points <= 0}>
