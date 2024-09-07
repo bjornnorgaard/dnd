@@ -1,7 +1,16 @@
 <script lang="ts">
     import { page } from "$app/stores";
     import { TabAnchor, TabGroup } from "@skeletonlabs/skeleton";
-    import { navRoute } from "$lib/constants/navigation";
+    import { navRoutes } from "$lib/constants/navigation";
+    import { derived } from "svelte/store";
+    import { Role, settings } from "$lib/stores/settings";
+
+    const routes = derived(settings, (s) => {
+        if (s.role === Role.Pc) {
+            return navRoutes.filter(r => r.dmOnly === false);
+        }
+        return navRoutes;
+    });
 </script>
 
 <TabGroup
@@ -12,7 +21,7 @@
         rounded=""
         border="border-t-2 border-surface-900"
         class="w-full bg-surface-100-800-token">
-    {#each navRoute as r}
+    {#each $routes as r}
         <TabAnchor href={r.route} selected={$page.url.pathname.includes(r.route) && r.route !== "/"}>
             <svelte:fragment slot="lead">
                 <div class="flex justify-center">

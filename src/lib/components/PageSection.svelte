@@ -6,7 +6,7 @@
 <section class="py-4 space-y-4">
     {#if title}
         <hgroup>
-            <h2 class="font-bold h2">{title}</h2>
+            <h2 class="bg-gradient-to-br box-decoration-clone bg-clip-text font-bold text-transparent h2 from-secondary-300 to-secondary-500">{title}</h2>
             {#if desc}
                 <span>{desc}</span>
             {/if}
