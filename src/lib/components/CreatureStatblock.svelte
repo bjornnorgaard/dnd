@@ -5,8 +5,6 @@
     import StatblockDivider from "$lib/components/StatblockDivider.svelte";
     import { fetchSpells } from "$lib/utils/fetch-spells";
     import { ProgressBar } from "@skeletonlabs/skeleton";
-    import { statblock } from "$lib/stores/statblock";
-    import { CircleX } from "lucide-svelte";
     import SpellCard from "$lib/components/SpellCard.svelte";
     import type { Creature } from "$lib/types/creature";
 
@@ -18,9 +16,6 @@
     <div class="p-4 text-sm card">
         <div class="flex justify-between">
             <h3 class="font-bold grow h3 text-primary-500">{c.name}</h3>
-            <button on:click={() => statblock.close()}>
-                <CircleX/>
-            </button>
         </div>
 
         <p>

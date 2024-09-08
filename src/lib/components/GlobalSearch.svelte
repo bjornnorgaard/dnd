@@ -3,6 +3,7 @@
     import { goto } from "$app/navigation";
     import { onMount } from "svelte";
     import { globalSearch, type GlobalSearchState } from "$lib/stores/global-search";
+    import { settings } from "$lib/stores/settings";
 
     let query: string = "";
     let dialog: HTMLDialogElement | null = null;
@@ -26,7 +27,7 @@
 
     async function search() {
         if (!query.length) return;
-        const res = await fetch(`/api/search?query=${query}`).then(r => r.json());
+        const res = await fetch(`/api/search?query=${query}&role=${$settings.role}`).then(r => r.json());
         results = res.map((r: string) => ({ label: r, value: r }));
     }
 
