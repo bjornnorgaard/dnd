@@ -21,9 +21,11 @@
         <PageSection title="Features to Try">
             <p>Collection of tools for both players and runners of D&D 5th Edition games.</p>
             <div class="grid gap-4 my-4 sm:grid-cols-2 md:grid-cols-3">
-                <a class="btn variant-ghost-secondary" href={routes.beasts()}>Search Beasts</a>
+                {#if $settings.role === Role.Dm}
+                    <a class="btn variant-ghost-secondary" href={routes.beasts()}>Search Beasts</a>
+                    <a class="btn variant-ghost-secondary" href={routes.combat()}>Create Encounters</a>
+                {/if}
                 <a class="btn variant-ghost-secondary" href={routes.spells()}>Search Spells</a>
-                <a class="btn variant-ghost-secondary" href={routes.combat()}>Create Encounters</a>
                 <a class="btn variant-ghost-secondary" href={routes.settings()}>Change Settings</a>
             </div>
         </PageSection>
