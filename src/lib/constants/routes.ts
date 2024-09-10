@@ -16,5 +16,8 @@ export const routes = {
     spells: () => "/spells",
     spells_slug: (slug: string) => `/spells/${slug}`,
 
+    spellbook: () => "/spellbook",
+    spellbook_slug: (slug: string) => `/spellbook/${slug}`,
+
     settings: () => "/settings"
 }

@@ -1,11 +1,20 @@
 <script lang="ts">
     import type { Spell } from "$lib/types/spell";
+    import { CircleX } from "lucide-svelte";
+    import { createEventDispatcher } from "svelte";
 
     export let spell: Spell;
+
+    const dispatcher = createEventDispatcher();
 </script>
 
 <div>
-    <p><b class="text-lg text-primary-500">{spell.name}</b></p>
+    <div class="flex items-center w-full justify-between">
+        <p><b class="text-lg text-primary-500">{spell.name}</b></p>
+        <button class="btn-icon btn-icon-sm text-warning-500 hover:text-error-500">
+            <CircleX/>
+        </button>
+    </div>
     <p class="pb-2 italic">{spell.level} {spell.school.toLowerCase()} {spell.can_be_cast_as_ritual ? "(ritual)" : ""}</p>
     <p><b>Casting Time</b> {spell.casting_time}</p>
     <p><b>Range</b> {spell.range}</p>
