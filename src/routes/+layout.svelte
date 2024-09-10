@@ -17,8 +17,8 @@
 <OpenGraph/>
 <GlobalSearch/>
 
-<main class="flex h-screen">
-    <div class="hidden h-full md:block">
+<main class="flex min-h-screen">
+    <div class="hidden min-h-screen md:block">
         <NavSide/>
     </div>
 
