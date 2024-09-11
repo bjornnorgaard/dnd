@@ -31,3 +31,4 @@ function createSpellbookStore() {
 }
 
 export const spellbook = createSpellbookStore() ?? writable<Spellbook[]>([]);
+
