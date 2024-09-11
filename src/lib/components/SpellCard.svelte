@@ -6,12 +6,16 @@
     export let spell: Spell;
 
     const dispatcher = createEventDispatcher();
+
+    function crossClicked() {
+        dispatcher("remove", spell);
+    }
 </script>
 
 <div>
     <div class="flex items-center w-full justify-between">
         <p><b class="text-lg text-primary-500">{spell.name}</b></p>
-        <button class="btn-icon btn-icon-sm text-warning-500 hover:text-error-500">
+        <button class="btn-icon btn-icon-sm hover:text-error-500" on:click={() => crossClicked()}>
             <CircleX/>
         </button>
     </div>
