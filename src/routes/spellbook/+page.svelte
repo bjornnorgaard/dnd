@@ -42,8 +42,13 @@
 
     function addSpell(spell: Spell) {
         $spellbook[$activeSpellbookIndex].spells = [ ...$spellbook[$activeSpellbookIndex].spells, spell ];
+        sortSpellbook($activeSpellbookIndex);
         spells = [];
         searchInput = "";
+    }
+
+    function sortSpellbook(index: number) {
+        $spellbook[index].spells = $spellbook[index].spells.sort((a, b) => a.level_int - b.level_int);
     }
 
     async function searchKeydown(e: KeyboardEvent) {
@@ -79,8 +84,8 @@
         </label>
     </form>
 
-    {#if !$spellbook.length}
-        <aside class="alert variant-ghost-warning flex flex-col">
+    {#if $spellbook.length === 0}
+        <aside class="flex flex-col alert variant-ghost-warning">
             <div class="flex items-center gap-4">
                 <AlertCircle/>
                 <h3 class="h3">No spellbooks yet...</h3>
@@ -103,12 +108,15 @@
             {/each}
             <svelte:fragment slot="panel">
                 <Accordion spacing="space-y-2" regionPanel="variant-soft-surface" regionControl="variant-soft-surface">
-                    <p>Search and add spells to {$spellbook[$activeSpellbookIndex].name}'s spellbook</p>
-                    <div class="input-group input-group-divider grid-cols-[auto_1fr_auto]">
-                        <div class="input-group-shim">
-                            <Search/>
+                    <div class="p-4 card variant-soft-surface">
+
+                        <p>Search and add spells to {$spellbook[$activeSpellbookIndex].name}'s spellbook</p>
+                        <div class="input-group input-group-divider grid-cols-[auto_1fr_auto]">
+                            <div class="input-group-shim">
+                                <Search/>
+                            </div>
+                            <input type="search" placeholder="Search..." bind:value={searchInput} on:keydown={(e) => {searchKeydown(e)}}/>
                         </div>
-                        <input type="search" placeholder="Search..." bind:value={searchInput} on:keydown={(e) => {searchKeydown(e)}}/>
                     </div>
 
                     {#if spells.length}
@@ -136,35 +144,38 @@
                         </Table>
                     {/if}
 
-                    {#each $spellbook[$activeSpellbookIndex].spells as s, si (s.slug)}
-                        <div in:slide={{axis: 'y', easing: cubicInOut, delay: 200, duration: 200}} out:slide={{axis: 'y',  easing: cubicInOut, duration: 200}}>
-                            <AccordionItem>
-                                <svelte:fragment slot="summary">
-                                    <div class="flex justify-between gap-4">
-                                        <div class="flex gap-4">
-                                            <span class="badge variant-outline">{s.level}</span>
-                                            <span class="font-bold text-primary-500">{s.name}</span>
+                    {#if !spells.length}
+                        {#each $spellbook[$activeSpellbookIndex].spells as s, si (s.slug)}
+                            <div in:slide={{axis: 'y', easing: cubicInOut, delay: 200, duration: 200}} out:slide={{axis: 'y',  easing: cubicInOut, duration: 200}}>
+                                <AccordionItem>
+                                    <svelte:fragment slot="summary">
+                                        <div class="flex justify-between gap-4">
+                                            <div class="flex gap-4">
+                                                <span class="badge variant-outline">{s.level}</span>
+                                                <span class="font-bold text-primary-500">{s.name}</span>
+                                            </div>
+                                            <div class="flex gap-2">
+                                                {#if s.can_be_cast_as_ritual}
+                                                    <span class="badge variant-outline-primary">{s.can_be_cast_as_ritual ? "Ritual" : ""}</span>
+                                                {/if}
+                                                {#if s.casting_time !== "1 action"}
+                                                    <span class="badge variant-outline-secondary">{s.casting_time.slice(0, 10)}</span>
+                                                {/if}
+                                                {#if s.range.toLowerCase() !== "self"}
+                                                    <span class="hidden badge variant-outline-tertiary sm:block">{s.range}</span>
+                                                {/if}
+                                                {#if s.duration.toLowerCase() !== "instantaneous"}
+                                                    <span class="hidden badge variant-outline-success sm:block">{s.duration}</span>
+                                                {/if}
+                                                <span class="hidden badge variant-outline-surface md:block">{s.components}</span>
+                                            </div>
                                         </div>
-                                        <div class="flex gap-2">
-                                            {#if s.can_be_cast_as_ritual}
-                                                <span class="badge variant-outline-primary">{s.can_be_cast_as_ritual ? "Ritual" : ""}</span>
-                                            {/if}
-                                            {#if s.casting_time !== "1 action"}
-                                                <span class="badge variant-outline-secondary">{s.casting_time.slice(0, 10)}</span>
-                                            {/if}
-                                            {#if s.range.toLowerCase() !== "self"}
-                                                <span class="badge variant-outline-tertiary">{s.range}</span>
-                                            {/if}
-                                            {#if s.duration.toLowerCase() !== "instantaneous"}
-                                                <span class="badge variant-outline-success">{s.duration}</span>
-                                            {/if}
-                                            <span class="badge variant-outline-surface">{s.components}</span>
-                                        </div>
-                                    </div>
-                                </svelte:fragment>
-                                <svelte:fragment slot="content">
-                                    <div class="flex justify-between items-start">
-                                        <div>
+                                    </svelte:fragment>
+                                    <svelte:fragment slot="content">
+                                        <div class="relative">
+                                            <button class="absolute top-0 right-0 btn btn-sm variant-soft-error hover:variant-filled-error" on:click={() => removeSpell($activeSpellbookIndex, si)}>
+                                                Remove {s.name}
+                                            </button>
                                             <p><b>School</b> {s.level} {s.school.toLowerCase()} {s.can_be_cast_as_ritual ? "(ritual)" : ""}</p>
                                             <p><b>Casting Time</b> {s.casting_time}</p>
                                             <p><b>Range</b> {s.range}</p>
@@ -178,22 +189,20 @@
                                                 {s.duration.toLowerCase()}
                                             </p>
                                         </div>
-                                        <button class="btn btn-sm variant-filled-error" on:click={() => removeSpell($activeSpellbookIndex, si)}>
-                                            Remove {s.name}
-                                        </button>
-                                    </div>
-                                    <p class="pt-2 indent-4">{s.desc}</p>
-                                    {#if s.higher_level}
-                                        <p class="pt-2"><b>At Higher Levels</b> {s.higher_level}</p>
-                                    {/if}
-                                </svelte:fragment>
-                            </AccordionItem>
+                                        <p class="pt-2 indent-4">{s.desc}</p>
+                                        {#if s.higher_level}
+                                            <p class="pt-2"><b>At Higher Levels</b> {s.higher_level}</p>
+                                        {/if}
+                                    </svelte:fragment>
+                                </AccordionItem>
+                            </div>
+                        {/each}
+                        <br>
+                        <div class="flex">
+                            <button class="w-full btn variant-soft-error hover:variant-filled-error" type="button" on:click={() => deleteSpellbook($activeSpellbookIndex)}>Delete {$spellbook[$activeSpellbookIndex].name}'s Spellbook</button>
                         </div>
-                    {/each}
+                    {/if}
                 </Accordion>
-                <div class="mt-4 flex justify-end">
-                    <button class="btn btn-sm variant-outline hover:variant-filled-error" type="button" on:click={() => deleteSpellbook($activeSpellbookIndex)}>Delete {$spellbook[$activeSpellbookIndex].name}'s Spellbook</button>
-                </div>
             </svelte:fragment>
         </TabGroup>
     {/if}
