@@ -17,7 +17,6 @@
 <PageWrapper title={data.spell.name} desc={`${data.spell.level} ${data.spell.school.toLowerCase()} ${data.spell.can_be_cast_as_ritual ? "(ritual)" : ""}`}>
     <div>
         <StatblockDivider/>
-        <button class="btn variant-filled-primary" type="button" on:click={() => addToSpellbook()}>Add to spellbook</button>
         <p><b>Casting Time</b> {data.spell.casting_time}</p>
         <p><b>Range</b> {data.spell.range}</p>
         <p><b>Components</b> {data.spell.components}</p>
