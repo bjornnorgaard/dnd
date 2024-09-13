@@ -22,7 +22,7 @@
         <NavSide/>
     </div>
 
-    <div class="w-full">
+    <div class="w-full pb-32">
         <slot/>
     </div>
 
