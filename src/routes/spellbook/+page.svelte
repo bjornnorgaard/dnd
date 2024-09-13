@@ -32,7 +32,7 @@
     }
 
     function deleteSpellbook(index: number) {
-        if ($activeSpellbookIndex === index) {
+        if ($activeSpellbookIndex === index && $activeSpellbookIndex !== 0) {
             $activeSpellbookIndex = index - 1;
         }
         $spellbook = $spellbook.filter((_, i) => i !== index);
