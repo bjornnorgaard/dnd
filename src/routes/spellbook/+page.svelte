@@ -10,8 +10,7 @@
     import TableHead from "$lib/components/TableHead.svelte";
     import Table from "$lib/components/Table.svelte";
     import TableBody from "$lib/components/TableBody.svelte";
-    import { flip } from "svelte/animate";
-    import { fly, slide } from "svelte/transition";
+    import { slide } from "svelte/transition";
     import { cubicInOut } from "svelte/easing";
 
     let ownerInput = "";
