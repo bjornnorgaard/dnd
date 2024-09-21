@@ -1,9 +1,8 @@
 <script lang="ts">
-    import { spellbook } from "$lib/stores/spellbook";
+    import { activeSpellbookIndex, spellbookStore } from "$lib/stores/spellbookStore";
     import PageWrapper from "$lib/components/PageWrapper.svelte";
     import { Accordion, AccordionItem, Tab, TabGroup } from "@skeletonlabs/skeleton";
     import { AlertCircle, PlusCircle, Search } from "lucide-svelte";
-    import { activeSpellbookIndex } from "$lib/stores/activeSpellbookIndex";
     import { DEFAULT_PAGE_SIZE } from "$lib/constants/paging";
     import type { Spell } from "$lib/types/spell";
     import { routes } from "$lib/constants/routes";
@@ -22,12 +21,12 @@
             return;
         }
 
-        if ($spellbook.find(b => b.name === ownerInput)) {
+        if ($spellbookStore.find(b => b.name === ownerInput)) {
             return;
         }
 
-        $spellbook = [ ...$spellbook, { name: ownerInput, spells: [] } ];
-        $activeSpellbookIndex = $spellbook.length - 1;
+        $spellbookStore = [ ...$spellbookStore, { name: ownerInput, spells: [] } ];
+        $activeSpellbookIndex = $spellbookStore.length - 1;
         ownerInput = "";
     }
 
@@ -35,11 +34,11 @@
         if ($activeSpellbookIndex === index && $activeSpellbookIndex !== 0) {
             $activeSpellbookIndex = index - 1;
         }
-        $spellbook = $spellbook.filter((_, i) => i !== index);
+        $spellbookStore = $spellbookStore.filter((_, i) => i !== index);
     }
 
     function removeSpell(spellbookIndex: number, spellIndex: number) {
-        $spellbook[spellbookIndex].spells = $spellbook[spellbookIndex].spells.filter((_, i) => i !== spellIndex);
+        $spellbookStore[spellbookIndex].spells = $spellbookStore[spellbookIndex].spells.filter((_, i) => i !== spellIndex);
     }
 
     async function searchSpells() {
@@ -52,19 +51,19 @@
             return;
         }
 
-        if ($spellbook[$activeSpellbookIndex].spells.find(s => s.slug === spell.slug)) {
+        if ($spellbookStore[$activeSpellbookIndex].spells.find(s => s.slug === spell.slug)) {
             searchInput = "";
             spells = [];
             return;
         }
-        $spellbook[$activeSpellbookIndex].spells = [ ...$spellbook[$activeSpellbookIndex].spells, spell ];
+        $spellbookStore[$activeSpellbookIndex].spells = [ ...$spellbookStore[$activeSpellbookIndex].spells, spell ];
         sortSpellbook($activeSpellbookIndex);
         searchInput = "";
         spells = [];
     }
 
     function sortSpellbook(index: number) {
-        $spellbook[index].spells = $spellbook[index].spells.sort((a, b) => a.level_int - b.level_int);
+        $spellbookStore[index].spells = $spellbookStore[index].spells.sort((a, b) => a.level_int - b.level_int);
     }
 
     async function searchKeydown(e: KeyboardEvent) {
@@ -84,7 +83,7 @@
 </script>
 
 <PageWrapper title="Spellbook" desc="Manage your spells">
-    {#if $spellbook.length === 0}
+    {#if $spellbookStore.length === 0}
         <aside class="flex flex-col alert variant-ghost-warning">
             <div class="flex items-center gap-4">
                 <AlertCircle/>
@@ -111,7 +110,7 @@
         </form>
     {:else}
         <TabGroup active="border-b-2 border-surface-500">
-            {#each $spellbook as b, bi}
+            {#each $spellbookStore as b, bi}
                 <Tab bind:group={$activeSpellbookIndex} name={b.name} value={bi}>
                     <h2 class="h2"
                         class:font-bold={$activeSpellbookIndex === bi}
@@ -131,7 +130,7 @@
 
             <svelte:fragment slot="panel">
                 <Accordion spacing="space-y-2" regionPanel="variant-soft-surface" regionControl="variant-soft-surface">
-                    {#if $activeSpellbookIndex === 99 || $spellbook.length === 0}
+                    {#if $activeSpellbookIndex === 99 || $spellbookStore.length === 0}
                         <form on:submit|preventDefault={() => createSpellbook()} class="flex gap-4">
                             <label for="input" class="w-full label">
                                 <span>Who will own this spellbook?</span>
@@ -186,7 +185,7 @@
                             </Table>
                         {/if}
 
-                        {#each $spellbook[$activeSpellbookIndex].spells as s, si (s.slug)}
+                        {#each $spellbookStore[$activeSpellbookIndex].spells as s, si (s.slug)}
                             <div in:slide={{axis: 'y', easing: cubicInOut, delay: 200, duration: 200}} out:slide={{axis: 'y',  easing: cubicInOut, duration: 200}}>
                                 <AccordionItem>
                                     <svelte:fragment slot="summary">
@@ -244,7 +243,7 @@
                         <div class="flex justify-end pt-8">
                             <button class="btn variant-soft hover:variant-filled-error" type="button"
                                     on:click={() => deleteSpellbook($activeSpellbookIndex)}>
-                                Delete <span class="px-1 text-primary-500">{$spellbook[$activeSpellbookIndex].name}'s</span> Spellbook
+                                Delete <span class="px-1 text-primary-500">{$spellbookStore[$activeSpellbookIndex].name}'s</span> Spellbook
                             </button>
                         </div>
                     {/if}

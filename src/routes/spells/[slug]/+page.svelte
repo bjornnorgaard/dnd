@@ -2,12 +2,12 @@
     import PageWrapper from "$lib/components/PageWrapper.svelte";
     import { Accordion, AccordionItem } from "@skeletonlabs/skeleton";
     import StatblockDivider from "$lib/components/StatblockDivider.svelte";
-    import { spellbook } from "$lib/stores/spellbook";
+    import { spellbookStore } from "$lib/stores/spellbookStore";
 
     export let data;
 
     function addToSpellbook() {
-        spellbook.update((s) => {
+        spellbookStore.update((s) => {
             s[0].spells.push(data.spell);
             return s;
         });
