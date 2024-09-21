@@ -21,13 +21,15 @@ function createSpellbookStore() {
     }
 
     const parsedValue: SpellbookStoreType[] = JSON.parse(rawValue);
-    const store = writable<SpellbookStoreType[]>(parsedValue);
+    const { set, subscribe, update } = writable<SpellbookStoreType[]>(parsedValue);
 
-    store.subscribe((value) => {
+    subscribe((value) => {
         localStorage.setItem(key, JSON.stringify(value));
     });
 
-    return store;
+    return {
+        set, subscribe, update
+    };
 }
 
 export const spellbookStore = createSpellbookStore() ?? writable<SpellbookStoreType[]>([]);
