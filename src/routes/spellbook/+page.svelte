@@ -9,7 +9,7 @@
     import TableHead from "$lib/components/TableHead.svelte";
     import Table from "$lib/components/Table.svelte";
     import TableBody from "$lib/components/TableBody.svelte";
-    import { slide } from "svelte/transition";
+    import { fly } from "svelte/transition";
     import { cubicInOut } from "svelte/easing";
 
     let ownerInput = "";
@@ -186,7 +186,8 @@
                         {/if}
 
                         {#each $spellbookStore[$activeSpellbookIndex].spells as s, si (s.slug)}
-                            <div in:slide={{axis: 'y', easing: cubicInOut, delay: 200, duration: 200}} out:slide={{axis: 'y',  easing: cubicInOut, duration: 200}}>
+                            <div in:fly={{x: -100, easing: cubicInOut, delay: 200, duration: 100}} out:fly={{x: 100,  easing: cubicInOut, duration: 100}}>
+<!--                            <div in:fly={{x: -200, easing: cubicInOut, delay: 200, duration: 200}} out:slide={{axis: 'x',  easing: cubicInOut, duration: 200}}>-->
                                 <AccordionItem>
                                     <svelte:fragment slot="summary">
                                         <div class="flex justify-between gap-4">
@@ -241,7 +242,7 @@
                         {/each}
 
                         <div class="flex justify-end pt-8">
-                            <button class="btn variant-soft hover:variant-filled-error" type="button"
+                            <button class="btn hover:variant-filled-error" type="button"
                                     on:click={() => deleteSpellbook($activeSpellbookIndex)}>
                                 Delete <span class="px-1 text-primary-500">{$spellbookStore[$activeSpellbookIndex].name}'s</span> Spellbook
                             </button>
