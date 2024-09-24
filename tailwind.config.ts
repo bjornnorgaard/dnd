@@ -22,7 +22,7 @@ const config = {
         forms,
         // 4. Append the Skeleton plugin (after other plugins)
         skeleton({
-            themes: { preset: [ "gold-nouveau" ] },
+            themes: { preset: [ { name: "gold-nouveau", enhancements: true } ] },
         }),
     ],
 } satisfies Config;
