@@ -98,7 +98,7 @@
         <form on:submit|preventDefault={() => createSpellbook()} class="flex gap-4">
             <label for="input" class="w-full label">
                 <span>Who will own this spellbook?</span>
-                <div class="flex w-full gap-2">
+                <span class="flex w-full gap-2">
                     <input id="input" type="text" class="input" autocomplete="off" bind:value={ownerInput} placeholder="Character name...">
                     <button class="btn"
                             class:variant-filled-surface={!ownerInput.length}
@@ -106,7 +106,7 @@
                             type="button" disabled={!ownerInput} on:click={() => createSpellbook()}>
                         Create
                     </button>
-                </div>
+                </span>
             </label>
         </form>
     {:else}
@@ -135,7 +135,7 @@
                         <form on:submit|preventDefault={() => createSpellbook()} class="flex gap-4">
                             <label for="input" class="w-full label">
                                 <span>Who will own this spellbook?</span>
-                                <div class="flex w-full gap-2">
+                                <span class="flex w-full gap-2">
                                     <input id="input" type="text" class="input" autocomplete="off" bind:value={ownerInput} placeholder="Character name...">
                                     <button class="btn"
                                             class:variant-filled-surface={!ownerInput.length}
@@ -143,7 +143,7 @@
                                             type="button" disabled={!ownerInput} on:click={() => createSpellbook()}>
                                         Create
                                     </button>
-                                </div>
+                                </span>
                             </label>
                         </form>
                     {/if}
@@ -242,7 +242,6 @@
                                 </AccordionItem>
                             </div>
                         {/each}
-
                         <div class="flex justify-end pt-8">
                             <button class="btn hover:variant-filled-error" type="button"
                                     on:click={() => deleteSpellbook($activeSpellbookIndex)}>
