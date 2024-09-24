@@ -8,7 +8,7 @@
     import TableHead from "$lib/components/TableHead.svelte";
     import TableBody from "$lib/components/TableBody.svelte";
     import { routes } from "$lib/constants/routes";
-    import PageSettings from "$lib/components/PageSettings.svelte";
+    import PageSettings from "$lib/components/PagingSettings.svelte";
 
     let creatures: Creature[] = [];
     let query = "";
