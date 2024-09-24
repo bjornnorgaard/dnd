@@ -1,5 +1,3 @@
-import { Class } from "../constants/classes";
-
 export interface Creature {
     slug: string;
     desc: string;
