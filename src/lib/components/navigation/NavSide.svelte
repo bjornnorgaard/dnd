@@ -14,7 +14,7 @@
     });
 </script>
 
-<div class="h-full border-r-2 border-surface-900">
+<div class="h-full border-r-2 border-surface-900 print:hidden">
     <AppRail>
         <svelte:fragment slot="lead">
             <NavSearchButton/>

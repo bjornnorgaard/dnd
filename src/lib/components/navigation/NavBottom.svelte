@@ -20,6 +20,7 @@
         flex="flex-1"
         rounded=""
         border="border-t-2 border-surface-900"
+        regionList="print:hidden"
         class="w-full bg-surface-100-800-token">
     {#each $routes as r}
         <TabAnchor href={r.route} selected={$page.url.pathname.includes(r.route) && r.route !== "/"}>
