@@ -81,6 +81,9 @@
         await searchSpells();
     }
 
+    function isPrinting(): boolean {
+        return window.matchMedia("print").matches;
+    }
 </script>
 
 <PageWrapper title="Spellbook" desc="Manage your spells">
