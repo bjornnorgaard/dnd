@@ -245,10 +245,14 @@
                                 </AccordionItem>
                             </div>
                         {/each}
-                        <div class="flex justify-end pt-8">
-                            <button class="btn hover:variant-filled-error" type="button"
+                        <div class="flex justify-between pt-8 gap-4">
+                            <a href={routes.spellbook_printable($activeSpellbookIndex)} class="anchor" type="button">
+                                View Printer Friendly Version
+                            </a>
+
+                            <button class="btn text-surface-600-300-token hover:variant-filled-error" type="reset"
                                     on:click={() => deleteSpellbook($activeSpellbookIndex)}>
-                                Delete <span class="px-1 text-primary-500">{$spellbookStore[$activeSpellbookIndex].name}'s</span> Spellbook
+                                Delete {$spellbookStore[$activeSpellbookIndex].name}'s Spellbook
                             </button>
                         </div>
                     {/if}
