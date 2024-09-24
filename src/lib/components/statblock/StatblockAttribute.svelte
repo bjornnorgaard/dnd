@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { mapAttributeToModifier } from "$lib/utils/modifiers";
+    import { convertAttributeScoreToModifier } from "$lib/utils/modifiers";
 
     export let label: string;
     export let value: number;
@@ -10,6 +10,6 @@
     <div class="font-bold uppercase tracking-tighter text-primary-500">{label}</div>
     <div>
         <span class="font-light">{value}</span>
-        (<span class="font-bold">{mapAttributeToModifier(value)}</span>)
+        (<span class="font-bold">{convertAttributeScoreToModifier(value)}</span>)
     </div>
 </div>

@@ -1,7 +1,7 @@
 import FlexSearch from "flexsearch";
-import type { Creature } from "$lib/types/creature";
-import { indexOptions } from "$lib/search/constants";
-import { routes } from "$lib/constants/routes";
+import type { Creature } from "$lib/data/creature";
+import { indexOptions } from "$lib/search/index-options";
+import { routes } from "$lib/components/navigation/routes";
 import { creatureIndex, creatures, siteIndex } from "../../hooks.server";
 
 export function creatureSearchString(c: Creature): string {

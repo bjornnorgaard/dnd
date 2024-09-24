@@ -1,5 +1,5 @@
 import { Book, Home, Library, Rabbit, Settings } from "lucide-svelte";
-import { routes } from "$lib/constants/routes";
+import { routes } from "$lib/components/navigation/routes";
 
 export interface NavRoute {
     label: string;

@@ -1,17 +1,9 @@
 <script lang="ts">
     import PageWrapper from "$lib/components/PageWrapper.svelte";
     import { Accordion, AccordionItem } from "@skeletonlabs/skeleton";
-    import StatblockDivider from "$lib/components/StatblockDivider.svelte";
-    import { spellbookStore } from "$lib/stores/spellbookStore";
+    import StatblockDivider from "$lib/components/statblock/StatblockDivider.svelte";
 
     export let data;
-
-    function addToSpellbook() {
-        spellbookStore.update((s) => {
-            s[0].spells.push(data.spell);
-            return s;
-        });
-    }
 </script>
 
 <PageWrapper title={data.spell.name} desc={`${data.spell.level} ${data.spell.school.toLowerCase()} ${data.spell.can_be_cast_as_ritual ? "(ritual)" : ""}`}>

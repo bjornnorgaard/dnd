@@ -1,7 +1,7 @@
 import FlexSearch from "flexsearch";
-import type { Spell } from "$lib/types/spell";
-import { indexOptions } from "$lib/search/constants";
-import { routes } from "$lib/constants/routes";
+import type { Spell } from "$lib/data/spell";
+import { indexOptions } from "$lib/search/index-options";
+import { routes } from "$lib/components/navigation/routes";
 import { siteIndex, spellIndex, spells } from "../../hooks.server";
 
 export function spellSearchString(c: Spell): string {

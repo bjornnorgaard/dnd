@@ -1,6 +1,9 @@
-import { appendSign } from "$lib/utils/positive-sign";
+export function appendSign(n: number): string {
+    return n > 0 ? `+${n}` : `${n}`;
+}
 
-export function mapAttributeToModifier(value: number): string {
-    const modifier = Math.floor((value - 10) / 2);
+export function convertAttributeScoreToModifier(score: number): string {
+    const modifier = Math.floor((score - 10) / 2);
     return appendSign(modifier);
 }
+

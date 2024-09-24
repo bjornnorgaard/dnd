@@ -1,4 +1,4 @@
-import type { Spell } from "$lib/types/spell";
+import type { Spell } from "$lib/data/spell";
 import { json } from "@sveltejs/kit";
 import { searchSpells } from "$lib/search/spells";
 

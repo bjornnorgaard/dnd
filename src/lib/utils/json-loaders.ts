@@ -1,7 +1,7 @@
-import type { Creature } from "$lib/types/creature";
+import type { Creature } from "$lib/data/creature";
 import creatures from "$lib/data/creatures.json";
 import spells from "$lib/data/spells.json";
-import type { Spell } from "$lib/types/spell";
+import type { Spell } from "$lib/data/spell";
 
 export function loadCreatures(): Creature[] {
     const data: any = creatures;

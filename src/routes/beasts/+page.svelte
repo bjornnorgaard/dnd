@@ -1,13 +1,13 @@
 <script lang="ts">
     import PageWrapper from "$lib/components/PageWrapper.svelte";
     import PageSection from "$lib/components/PageSection.svelte";
-    import type { Creature } from "$lib/types/creature";
+    import type { Creature } from "$lib/data/creature";
     import { onMount } from "svelte";
     import SearchInput from "$lib/components/SearchInput.svelte";
-    import Table from "$lib/components/Table.svelte";
-    import TableHead from "$lib/components/TableHead.svelte";
-    import TableBody from "$lib/components/TableBody.svelte";
-    import { routes } from "$lib/constants/routes";
+    import Table from "$lib/components/table/Table.svelte";
+    import TableHead from "$lib/components/table/TableHead.svelte";
+    import TableBody from "$lib/components/table/TableBody.svelte";
+    import { routes } from "$lib/components/navigation/routes";
     import PageSettings from "$lib/components/PagingSettings.svelte";
 
     let creatures: Creature[] = [];

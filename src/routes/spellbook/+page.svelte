@@ -4,11 +4,11 @@
     import { Accordion, AccordionItem, Tab, TabGroup } from "@skeletonlabs/skeleton";
     import { AlertCircle, PlusCircle, Search } from "lucide-svelte";
     import { DEFAULT_PAGE_SIZE } from "$lib/constants/paging";
-    import type { Spell } from "$lib/types/spell";
-    import { routes } from "$lib/constants/routes";
-    import TableHead from "$lib/components/TableHead.svelte";
-    import Table from "$lib/components/Table.svelte";
-    import TableBody from "$lib/components/TableBody.svelte";
+    import type { Spell } from "$lib/data/spell";
+    import { routes } from "$lib/components/navigation/routes";
+    import TableHead from "$lib/components/table/TableHead.svelte";
+    import Table from "$lib/components/table/Table.svelte";
+    import TableBody from "$lib/components/table/TableBody.svelte";
     import { fly } from "svelte/transition";
     import { cubicInOut } from "svelte/easing";
 

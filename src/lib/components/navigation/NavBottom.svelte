@@ -1,7 +1,7 @@
 <script lang="ts">
     import { page } from "$app/stores";
     import { TabAnchor, TabGroup } from "@skeletonlabs/skeleton";
-    import { navRoutes } from "$lib/constants/navigation";
+    import { navRoutes } from "$lib/components/navigation/navigation";
     import { derived } from "svelte/store";
     import { Role, settings } from "$lib/stores/settings";
 

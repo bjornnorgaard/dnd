@@ -1,8 +1,8 @@
 <script lang="ts">
     import { AppRail, AppRailAnchor } from "@skeletonlabs/skeleton";
     import { page } from "$app/stores";
-    import { navRoutes } from "$lib/constants/navigation";
-    import NavSearchButton from "$lib/components/NavSearchButton.svelte";
+    import { navRoutes } from "$lib/components/navigation/navigation";
+    import NavSearchButton from "$lib/components/navigation/NavSearchButton.svelte";
     import { derived } from "svelte/store";
     import { Role, settings } from "$lib/stores/settings";
 

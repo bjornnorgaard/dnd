@@ -1,9 +1,9 @@
 <script lang="ts">
     import "../app.pcss";
     import { storePopup } from '@skeletonlabs/skeleton';
-    import NavSide from "$lib/components/NavSide.svelte";
+    import NavSide from "$lib/components/navigation/NavSide.svelte";
     import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
-    import NavBottom from "$lib/components/NavBottom.svelte";
+    import NavBottom from "$lib/components/navigation/NavBottom.svelte";
     import { inject } from '@vercel/analytics'
     import { dev } from "$app/environment";
     import GlobalSearch from "$lib/components/GlobalSearch.svelte";

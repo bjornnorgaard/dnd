@@ -1,14 +1,32 @@
 <script lang="ts">
     import PageWrapper from "$lib/components/PageWrapper.svelte";
     import { Accordion, AccordionItem, ProgressBar } from "@skeletonlabs/skeleton";
-    import { appendSign } from "$lib/utils/positive-sign";
-    import { fetchSpells } from "$lib/utils/fetch-spells";
-    import StatblockDivider from "$lib/components/StatblockDivider.svelte";
-    import StatblockSection from "$lib/components/StatblockSection.svelte";
+    import StatblockDivider from "$lib/components/statblock/StatblockDivider.svelte";
+    import StatblockSection from "$lib/components/statblock/StatblockSection.svelte";
     import SpellCard from "$lib/components/SpellCard.svelte";
-    import { mapAttributeToModifier } from "$lib/utils/modifiers";
+    import { appendSign, convertAttributeScoreToModifier } from "$lib/utils/modifiers";
+    import type { Spell } from "$lib/data/spell";
 
     export let data;
+
+    async function fetchSpells(url: string): Promise<Spell> {
+        if (url.endsWith("/")) {
+            url = url.slice(0, -1);
+        }
+
+        const slug = url.split("/").pop();
+        if (!slug) {
+            throw new Error("Invalid spell URL");
+        }
+
+        const res = await fetch(`/api/spells/${slug}`);
+        if (!res.ok) {
+            throw new Error(`Failed to fetch spell: ${res.statusText}`);
+        }
+
+        return await res.json();
+    }
+
 </script>
 
 {#if data.creature}
@@ -56,7 +74,7 @@
                         <div class="font-bold uppercase tracking-tighter text-primary-500">{s.label}</div>
                         <div>
                             <span class="font-light">{s.value}</span>
-                            (<span class="font-bold">{mapAttributeToModifier(s.value)}</span>)
+                            (<span class="font-bold">{convertAttributeScoreToModifier(s.value)}</span>)
                         </div>
                     </div>
                 {/each}

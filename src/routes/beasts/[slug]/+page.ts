@@ -1,6 +1,6 @@
 import { error } from "@sveltejs/kit";
 
-import { routes } from "$lib/constants/routes";
+import { routes } from "$lib/components/navigation/routes";
 
 export const load = async ({ params, fetch }) => {
     if (!params.slug) {

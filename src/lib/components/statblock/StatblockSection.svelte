@@ -1,5 +1,5 @@
 <script lang="ts">
-    import StatblockSectionDivider from "$lib/components/StatblockSectionDivider.svelte";
+    import StatblockSectionDivider from "$lib/components/statblock/StatblockSectionDivider.svelte";
 
     export let title: string;
     export let condition: boolean;
