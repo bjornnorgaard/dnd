@@ -11,6 +11,7 @@
     import TableBody from "$lib/components/table/TableBody.svelte";
     import { fly } from "svelte/transition";
     import { cubicInOut } from "svelte/easing";
+    import { flip } from "svelte/animate";
 
     let ownerInput = "";
     let searchInput = "";
@@ -186,8 +187,9 @@
                         {/if}
 
                         {#each $spellbookStore[$activeSpellbookIndex].spells as s, si (s.slug)}
-                            <div in:fly={{x: -100, easing: cubicInOut, delay: 200, duration: 100}} out:fly={{x: 100,  easing: cubicInOut, duration: 100}}>
-<!--                            <div in:fly={{x: -200, easing: cubicInOut, delay: 200, duration: 200}} out:slide={{axis: 'x',  easing: cubicInOut, duration: 200}}>-->
+                            <div animate:flip={{duration: 300}}
+                                 in:fly={{x: -100, easing: cubicInOut, delay: 200, duration: 100}}
+                                 out:fly={{x: 100,  easing: cubicInOut, duration: 100}}>
                                 <AccordionItem>
                                     <svelte:fragment slot="summary">
                                         <div class="flex justify-between gap-4">
