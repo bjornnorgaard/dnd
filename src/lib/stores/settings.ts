@@ -4,7 +4,7 @@ import { browser } from "$app/environment";
 export enum Role {
     None = "none",
     Dm = "dm",
-    Pc = "pc",
+    Pc = "pc"
 }
 
 class Settings {
