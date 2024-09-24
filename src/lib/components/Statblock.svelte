@@ -1,5 +1,5 @@
 <script lang="ts">
-    import CreatureStatAttribute from "$lib/components/CreatureStatAttribute.svelte";
+    import CreatureStatAttribute from "$lib/components/StatblockAttribute.svelte";
     import { appendSign } from "$lib/utils/positive-sign";
     import StatblockSection from "$lib/components/StatblockSection.svelte";
     import StatblockDivider from "$lib/components/StatblockDivider.svelte";

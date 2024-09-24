@@ -1,4 +1,4 @@
-import { Book, Home, Library, Rabbit, Settings, Swords } from "lucide-svelte";
+import { Book, Home, Library, Rabbit, Settings } from "lucide-svelte";
 import { routes } from "$lib/constants/routes";
 
 export interface NavRoute {
@@ -10,7 +10,6 @@ export interface NavRoute {
 
 export const navRoutes: NavRoute[] = [
     { label: "Home", route: routes.home(), icon: Home, dmOnly: false },
-    { label: "Combat", route: routes.combat(), icon: Swords, dmOnly: true },
     { label: "Beasts", route: routes.beasts(), icon: Rabbit, dmOnly: true },
     { label: "Spells", route: routes.spells(), icon: Library, dmOnly: false },
     { label: "Spellbook", route: routes.spellbook(), icon: Book, dmOnly: false },
