@@ -6,7 +6,7 @@
     let spellbook = $spellbookStore[data?.index];
 </script>
 
-<PrintablePage title={`${spellbook.name}'s Spellbook - dnd.bybear.dk`}>
+<PrintablePage title={`${spellbook.name}'s Spellbook`}>
     <div class="print:m-0 print:p-0 screen:p-4 space-y-4">
         {#if !spellbook}
             <aside class="alert variant-filled-error">
@@ -18,7 +18,6 @@
         {/if}
 
         {#if spellbook}
-            <h1 class="text-center underline font-bold h1">{spellbook.name}'s Spellbook</h1>
             <ol class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
                 {#each spellbook.spells as s}
                     <li class="break-inside-avoid-page rounded-2xl p-4 space-y-4"

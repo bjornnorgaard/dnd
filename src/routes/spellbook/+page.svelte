@@ -57,6 +57,7 @@
             spells = [];
             return;
         }
+
         $spellbookStore[$activeSpellbookIndex].spells = [ ...$spellbookStore[$activeSpellbookIndex].spells, spell ];
         sortSpellbook($activeSpellbookIndex);
         searchInput = "";
@@ -79,10 +80,6 @@
         }
 
         await searchSpells();
-    }
-
-    function isPrinting(): boolean {
-        return window.matchMedia("print").matches;
     }
 </script>
 
