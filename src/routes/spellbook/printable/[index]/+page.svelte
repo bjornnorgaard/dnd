@@ -1,6 +1,6 @@
 <script lang="ts">
     import { spellbookStore } from "$lib/stores/spellbookStore";
-    import PrintablePage from "./PrintablePage.svelte";
+    import PrintablePage from "../PrintablePage.svelte";
 
     export let data;
     let spellbook = $spellbookStore[data?.index];
