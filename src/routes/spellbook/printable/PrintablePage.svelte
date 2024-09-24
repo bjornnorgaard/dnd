@@ -14,7 +14,7 @@
     <title>{title ? `${title} - ` : ""}D&D By Bear - Tools for Dungeons & Dragons 5e</title>
 </svelte:head>
 
-<button class="fixed right-0 bottom-0 m-4 print:hidden animate-bounce rounded-full font-bold btn btn-xl variant-filled-primary" on:click={async () => print()}>
+<button class="fixed right-0 sm:bottom-0 bottom-16 m-4 print:hidden animate-bounce rounded-full font-bold btn btn-xl variant-filled-primary" on:click={async () => print()}>
     <span>Open Print Menu</span>
     <Printer/>
 </button>
