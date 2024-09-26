@@ -3,7 +3,7 @@ import { browser } from "$app/environment";
 import type { Spell } from "$lib/types/spell";
 
 export class SpellbookStore {
-    name: string = "";
+    owner: string = "";
     spells: Spell[] = [];
 }
 
