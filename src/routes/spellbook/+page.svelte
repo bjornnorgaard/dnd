@@ -22,11 +22,11 @@
             return;
         }
 
-        if ($spellbookStore.find(b => b.name === ownerInput)) {
+        if ($spellbookStore.find(b => b.owner === ownerInput)) {
             return;
         }
 
-        $spellbookStore = [ ...$spellbookStore, { name: ownerInput, spells: [] } ];
+        $spellbookStore = [ ...$spellbookStore, { owner: ownerInput, spells: [] } ];
         $activeSpellbookIndex = $spellbookStore.length - 1;
         ownerInput = "";
     }
@@ -112,12 +112,12 @@
     {:else}
         <TabGroup active="border-b-2 border-surface-500">
             {#each $spellbookStore as b, bi}
-                <Tab bind:group={$activeSpellbookIndex} name={b.name} value={bi}>
+                <Tab bind:group={$activeSpellbookIndex} name={b.owner} value={bi}>
                     <h2 class="h2"
                         class:font-bold={$activeSpellbookIndex === bi}
                         class:text-surface-500={$activeSpellbookIndex !== bi}
                         class:text-primary-500={$activeSpellbookIndex === bi}>
-                        {b.name}
+                        {b.owner}
                     </h2>
                 </Tab>
             {/each}
@@ -249,7 +249,7 @@
 
                             <button class="btn text-surface-600-300-token hover:variant-filled-error" type="reset"
                                     on:click={() => deleteSpellbook($activeSpellbookIndex)}>
-                                Delete {$spellbookStore[$activeSpellbookIndex].name}'s Spellbook
+                                Delete {$spellbookStore[$activeSpellbookIndex].owner}'s Spellbook
                             </button>
                         </div>
                     {/if}

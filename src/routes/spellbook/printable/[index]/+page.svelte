@@ -21,7 +21,7 @@
 
 </script>
 
-<PrintablePage title={`${spellbook.name}'s Spellbook`}>
+<PrintablePage title={`${spellbook.owner}'s Spellbook`}>
     <div class="space-y-4">
         {#if !spellbook}
             <aside class="alert variant-filled-error">
