@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type { Spell } from "$lib/data/spell";
+    import type { Spell } from "$lib/types/spell";
     import { CircleX } from "lucide-svelte";
     import { createEventDispatcher } from "svelte";
 

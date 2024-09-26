@@ -5,7 +5,7 @@
     import StatblockSection from "$lib/components/statblock/StatblockSection.svelte";
     import SpellCard from "$lib/components/SpellCard.svelte";
     import { appendSign, convertAttributeScoreToModifier } from "$lib/utils/modifiers";
-    import type { Spell } from "$lib/data/spell";
+    import type { Spell } from "$lib/types/spell";
 
     export let data;
 

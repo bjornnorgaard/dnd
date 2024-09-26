@@ -1,6 +1,6 @@
-import type { Spell } from "$lib/data/spell";
+import type { Spell } from "$lib/types/spell";
 import { json } from "@sveltejs/kit";
-import { searchSpells } from "$lib/search/spells";
+import { searchSpells } from "$lib/search/spell-search";
 
 export const GET = ({ url }) => {
     const query = url.searchParams.get("query") ?? "a";

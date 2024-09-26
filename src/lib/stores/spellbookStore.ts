@@ -1,8 +1,8 @@
 import { writable } from "svelte/store";
 import { browser } from "$app/environment";
-import type { Spell } from "$lib/data/spell";
+import type { Spell } from "$lib/types/spell";
 
-export class SpellbookStoreType {
+export class SpellbookStore {
     name: string = "";
     spells: Spell[] = [];
 }
@@ -20,8 +20,8 @@ function createSpellbookStore() {
         localStorage.setItem(key, rawValue);
     }
 
-    const parsedValue: SpellbookStoreType[] = JSON.parse(rawValue);
-    const { set, subscribe, update } = writable<SpellbookStoreType[]>(parsedValue);
+    const parsedValue: SpellbookStore[] = JSON.parse(rawValue);
+    const { set, subscribe, update } = writable<SpellbookStore[]>(parsedValue);
 
     subscribe((value) => {
         localStorage.setItem(key, JSON.stringify(value));
@@ -32,7 +32,7 @@ function createSpellbookStore() {
     };
 }
 
-export const spellbookStore = createSpellbookStore() ?? writable<SpellbookStoreType[]>([]);
+export const spellbookStore = createSpellbookStore() ?? writable<SpellbookStore[]>([]);
 
 export const activeSpellbookIndex = writable<number>(0);
 

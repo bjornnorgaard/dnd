@@ -1,7 +1,7 @@
 <script lang="ts">
     import PageWrapper from "$lib/components/PageWrapper.svelte";
     import PageSection from "$lib/components/PageSection.svelte";
-    import type { Creature } from "$lib/data/creature";
+    import type { Creature } from "$lib/types/creature";
     import { onMount } from "svelte";
     import SearchInput from "$lib/components/SearchInput.svelte";
     import Table from "$lib/components/table/Table.svelte";

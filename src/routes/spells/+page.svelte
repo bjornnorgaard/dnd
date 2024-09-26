@@ -1,7 +1,7 @@
 <script lang="ts">
     import PageWrapper from "$lib/components/PageWrapper.svelte";
     import PageSection from "$lib/components/PageSection.svelte";
-    import type { Spell } from "$lib/data/spell";
+    import type { Spell } from "$lib/types/spell";
     import { onMount } from "svelte";
     import SearchInput from "$lib/components/SearchInput.svelte";
     import Table from "$lib/components/table/Table.svelte";
