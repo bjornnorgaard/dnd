@@ -1,4 +1,4 @@
-import { searchSite } from "$lib/search/site";
+import { searchSite } from "$lib/search/site-search";
 import { json } from "@sveltejs/kit";
 import { Role } from "$lib/stores/settings";
 
