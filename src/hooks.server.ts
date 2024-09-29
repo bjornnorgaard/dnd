@@ -28,11 +28,12 @@ function loadSuperIndex() {
 
     const searchIndex = new FlexSearch.Document({
         language: "en",
+        preset: "match",
         document: {
             id: "name",
+            store: true,
             index: [
                 { field: "name", tokenize: "full" },
-                { field: "entries", tokenize: "full" },
             ],
         },
     });
