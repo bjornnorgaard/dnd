@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "gen": "node src/scripts/generate-search-index.js"
+    "gen": "node src/scripts/gen-indexes.js"
   },
   "devDependencies": {
     "@floating-ui/dom": "^1.6.11",
