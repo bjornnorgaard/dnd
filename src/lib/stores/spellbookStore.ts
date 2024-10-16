@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
 import { browser } from "$app/environment";
-import type { Spell } from "$lib/data/spell";
+import type { Spell } from "$lib/types/spell";
 
 export class SpellbookStoreType {
     name: string = "";

@@ -1,8 +1,8 @@
 import FlexSearch from "flexsearch";
-import type { Spell } from "$lib/data/spell";
 import { indexOptions } from "$lib/search/index-options";
 import { routes } from "$lib/components/navigation/routes";
 import { siteIndex, spellIndex, spells } from "../../hooks.server";
+import type { Spell } from "$lib/types/spell";
 
 export function spellSearchString(c: Spell): string {
     return `c:${c.dnd_class} l:${c.spell_level} ${c.name}`;
@@ -22,7 +22,7 @@ export function buildSpellIndex() {
     return flexIndex;
 }
 
-export function searchSpells(query: string, limit: number = 5, offset: number = 0): Spell[] {
+export function searchSpells(query: string, limit: number = 5, offset: number = 0, a5e: boolean = false): Spell[] {
     if (!query.length) {
         return spells.slice(offset, offset + limit);
     }
@@ -30,10 +30,14 @@ export function searchSpells(query: string, limit: number = 5, offset: number = 
     const options: FlexSearch.SearchOptions = {
         limit: limit,
         offset: offset,
-        suggest: true,
+        suggest: false,
     };
 
     let results = spellIndex.search(query, options);
 
-    return results.map(r => spells[r as number]);
+    if (a5e) {
+        return results.map(r => spells[r as number]);
+    }
+    const allSpellsResult: Spell[] = results.map(r => spells[r as number]);
+    return allSpellsResult.filter(spell => !spell.slug.includes("-a5e"));
 }
