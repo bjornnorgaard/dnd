@@ -8,7 +8,7 @@
     let classes = [ "Classes", ...Object.values(Class) ];
 
     function emitUpdate(): void {
-        dispatch("classUpdate", { class: selectedClass });
+        dispatch("update", { class: selectedClass });
     }
 </script>
 
