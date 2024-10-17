@@ -12,7 +12,6 @@
     }
 </script>
 
-
 <div class="flex justify-between">
 
     <select class="w-fit select" bind:value={selectedClass} on:change={() => emitUpdate()}>

@@ -28,7 +28,7 @@ function createSpellbookStore() {
     });
 
     return {
-        set, subscribe, update
+        set, subscribe, update,
     };
 }
 
