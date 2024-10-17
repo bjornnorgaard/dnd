@@ -1,13 +1,14 @@
 <script lang="ts">
     import { createEventDispatcher } from "svelte";
+    import { Class } from "$lib/constants/classes";
 
     const dispatch = createEventDispatcher();
 
-    let classes = ["all","artificer","barbarian","bard","cleric","druid","fighter","monk","paladin","ranger","rogue","sorcerer","warlock","wizard"];
-    let selectedClass = "all";
+    let selectedClass = "All";
+    let classes = [ "All", ...Object.values(Class) ];
 
     function emitUpdate(): void {
-        dispatch("classUpdate", { class:selectedClass });
+        dispatch("classUpdate", { class: selectedClass });
     }
 </script>
 
