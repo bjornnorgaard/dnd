@@ -33,8 +33,6 @@ export function searchSpells(query: string, limit: number = 5, offset: number = 
         suggest: false,
     };
 
-    let results = spellIndex.search(query, options);
-
     let results = spellIndex.search(query, options).map(r => spells[r as number]);
 
     if (!a5e) {

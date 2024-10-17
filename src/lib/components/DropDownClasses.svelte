@@ -4,8 +4,8 @@
 
     const dispatch = createEventDispatcher();
 
-    let selectedClass = "All";
-    let classes = [ "All", ...Object.values(Class) ];
+    let selectedClass = "Classes";
+    let classes = [ "Classes", ...Object.values(Class) ];
 
     function emitUpdate(): void {
         dispatch("classUpdate", { class: selectedClass });
@@ -17,7 +17,7 @@
 
     <select class="w-fit select" bind:value={selectedClass} on:change={() => emitUpdate()}>
         {#each classes as o}
-            <option value={o}>class: {o}</option>
+            <option value={o}>{o}</option>
         {/each}
     </select>
 
