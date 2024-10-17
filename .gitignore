@@ -133,18 +133,19 @@ dist
 ### Example user template template
 ### Example user template
 
-# IntelliJ project files
+# Editors
 .idea
-*.iml
-out
-gen
+.vscode
+
+# Apple crap
+.DS_Store
+
 ### Svelte template
 # gitignore template for the SvelteKit, frontend web component framework
 # website: https://kit.svelte.dev/
 
 .svelte-kit/
 package
-
 
 $houdini
 .vercel
