@@ -74,9 +74,7 @@
     if (selectedClass !== "") {
       query += ` c:${selectedClass}`;
     }
-    spells = await fetch(routes.api_spells(query, DEFAULT_PAGE_SIZE, 0, a5e), {
-      method: "GET",
-    }).then((r) => r.json());
+        spells = await fetch(routes.api_spells(query, DEFAULT_PAGE_SIZE, 0, a5e)).then((r) => r.json());
     originalSpellsOrder = [...spells];
     isSortingByAscending = false;
   }
