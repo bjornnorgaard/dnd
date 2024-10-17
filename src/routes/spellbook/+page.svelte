@@ -134,17 +134,20 @@
 
     function groupSpellsByLevel() {
         const currentSpellBook = $spellbookStore[$activeSpellbookIndex];
-        if(currentSpellBook){
-            groupedSpells = {};
+        const currentSpellBook = $spellbookStore[$activeSpellbookIndex];
+        if (!currentSpellBook) {
+            console.log("No spellbook found based on index", $activeSpellbookIndex);
+            return;
+        }
 
-            currentSpellBook.spells.forEach(s => {
+        groupedSpells = {};
+        currentSpellBook.spells.forEach(s => {
             const levelKey = s.level_int < 1 ? "Cantrips" : `Level ${s.level_int} spells`;
             if (!groupedSpells[levelKey]) {
                 groupedSpells[levelKey] = [];
             }
             groupedSpells[levelKey].push(s);
         });
-        }
     }
 
 </script>
