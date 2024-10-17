@@ -35,9 +35,11 @@ export function searchSpells(query: string, limit: number = 5, offset: number = 
 
     let results = spellIndex.search(query, options);
 
-    if (a5e) {
-        return results.map(r => spells[r as number]);
+    let results = spellIndex.search(query, options).map(r => spells[r as number]);
+
+    if (!a5e) {
+        results.filter(spell => !spell.slug.includes("-a5e"));
     }
-    const allSpellsResult: Spell[] = results.map(r => spells[r as number]);
-    return allSpellsResult.filter(spell => !spell.slug.includes("-a5e"));
+
+    return results;
 }
