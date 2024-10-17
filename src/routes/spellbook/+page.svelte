@@ -281,7 +281,7 @@
               </div>
               <div class="flex py-2 gap-2">
                 <DropDownLevels on:update={handleLevelUpdate}></DropDownLevels>
-                <DropDownClasses on:classUpdate={handleClassUpdate}
+                <DropDownClasses on:update={handleClassUpdate}
                 ></DropDownClasses>
                 <div class="ml-auto">
                   <SlideToggle name="a5e-slider" bind:checked={a5e}
