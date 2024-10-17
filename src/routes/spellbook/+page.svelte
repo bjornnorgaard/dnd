@@ -116,14 +116,14 @@
 
 
     function handleLevelSort() {
-        if(isSortingByAscending){
+        if (isSortingByAscending) {
             spells = spells.sort((a, b) => b.level_int - a.level_int);
-            isSortingByAscending=false;
+            isSortingByAscending = false;
+            return;
         }
-        else{
-            spells = spells.sort((a, b) => a.level_int - b.level_int);
-            isSortingByAscending=true;
-        }
+        
+        spells = spells.sort((a, b) => a.level_int - b.level_int);
+        isSortingByAscending = true;
     }
 
     function handleNameSort() {
