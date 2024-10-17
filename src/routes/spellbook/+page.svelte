@@ -84,15 +84,12 @@
       return;
     }
 
-    if (
-      $spellbookStore[$activeSpellbookIndex].spells.find(
-        (s) => s.slug === spell.slug
-      )
-    ) {
-      searchInput = "";
-      spells = [];
-      return;
-    }
+        const alreadyAdded = $spellbookStore[$activeSpellbookIndex].spells.find((s) => s.slug === spell.slug);
+        if (alreadyAdded) {
+            searchInput = "";
+            spells = [];
+            return;
+        }
 
     $spellbookStore[$activeSpellbookIndex].spells = [
       ...$spellbookStore[$activeSpellbookIndex].spells,
