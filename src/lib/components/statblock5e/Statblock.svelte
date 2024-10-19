@@ -19,6 +19,7 @@
 
     .host {
         display: inline-block;
+        width: 400px;
         @apply text-surface-900-50-token;
     }
 

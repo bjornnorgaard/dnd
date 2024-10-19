@@ -8,10 +8,9 @@
     import SectionHeading from "$lib/components/statblock5e/SectionHeading.svelte";
 </script>
 
-<div class="p-10 bg-white">
+<div class="p-10">
 
-
-    <div class="w-[400px]">
+    <div class="w-full">
 
         <Statblock>
             <CreatureHeading>
@@ -24,10 +23,12 @@
                     <svelte:fragment slot="title">Armor Class</svelte:fragment>
                     <svelte:fragment slot="desc">18 (natural armor)</svelte:fragment>
                 </PropertyLine>
+
                 <PropertyLine>
                     <svelte:fragment slot="title">Hit Points</svelte:fragment>
                     <svelte:fragment slot="desc">33 (6d8 + 6)</svelte:fragment>
                 </PropertyLine>
+
                 <PropertyLine>
                     <svelte:fragment slot="title">Speed</svelte:fragment>
                     <svelte:fragment slot="desc">25ft</svelte:fragment>
@@ -39,19 +40,23 @@
                     <svelte:fragment slot="title">Damage Immunities</svelte:fragment>
                     <svelte:fragment slot="desc">poison, psychic</svelte:fragment>
                 </PropertyLine>
+
                 <PropertyLine>
                     <svelte:fragment slot="title">Condition Immunities</svelte:fragment>
                     <svelte:fragment slot="desc">blinded, charmed, deafened, exhaustion, frightened, paralyzed, petrified, poisoned</svelte:fragment>
                 </PropertyLine>
+
                 <PropertyLine>
                     <svelte:fragment slot="title">Senses</svelte:fragment>
                     <svelte:fragment slot="desc">blindsight 60 ft. (blind beyond this radius), passive Perception&nbsp6
                     </svelte:fragment>
                 </PropertyLine>
+
                 <PropertyLine>
                     <svelte:fragment slot="title">Languages</svelte:fragment>
                     <svelte:fragment slot="desc">—</svelte:fragment>
                 </PropertyLine>
+
                 <PropertyLine>
                     <svelte:fragment slot="title">Challenge</svelte:fragment>
                     <svelte:fragment slot="desc">1 (200 XP)</svelte:fragment>
