@@ -1,23 +1,31 @@
+<div class="host">
+    <div class="bar"></div>
+    <div id="content-wrap">
+        <slot/>
+    </div>
+    <div class="bar"></div>
+</div>
+
 <style lang="postcss">
     .bar {
         height: 5px;
         background: #E69A28;
-        border: 1px solid black;
+        border: 1px solid #000;
         position: relative;
         z-index: 1;
     }
 
-    :host {
+    .host {
         display: inline-block;
+        @apply text-surface-900-50-token;
     }
 
     #content-wrap {
-        font-family: "Noto Sans", "Myriad Pro", Calibri, Helvetica, Arial, sans-serif;
+        font-family: "Noto Sans", "Myriad Pro", Calibri, Helvetica, Arial,
+        sans-serif;
         font-size: 13.5px;
-        padding: 0.6em 0.6em 0.5em;
         background: #FDF1DC;
-        /* color: black; */
-        @apply text-surface-800-100-token;
+        padding: 0.6em 0.6em 0.5em;
         border: 1px #DDD solid;
         box-shadow: 0 0 1.5em #867453;
 
@@ -29,33 +37,28 @@
         margin-left: 2px;
         margin-right: 2px;
 
-        /* This is possibly overridden by next CSS rule. */
-        width: 400px;
+        /* This is possibly overriden by next CSS rule. */
+        /* width: 400px; */
 
-        -webkit-columns: 400px;
-        -moz-columns: 400px;
-        columns: 400px;
-        -webkit-column-gap: 40px;
-        -moz-column-gap: 40px;
-        column-gap: 40px;
+        /* -webkit-columns: 400px; */
+        /* -moz-columns: 400px; */
+        /* columns: 400px; */
+        /* -webkit-column-gap: 40px; */
+        /* -moz-column-gap: 40px; */
+        /* column-gap: 40px; */
 
         /* We can't use CSS3 attr() here because no browser currently supports it,
            but we can use a CSS custom property instead. */
         height: var(--data-content-height);
 
         /* When height is constrained, we want sequential filling of columns. */
-        -webkit-column-fill: auto;
-        -moz-column-fill: auto;
-        column-fill: auto;
-    }
-
-    :host([data-two-column]) #content-wrap {
-        /* One column is 400px and the gap between them is 40px. */
-        width: 840px;
+        /* -webkit-column-fill: auto; */
+        /* -moz-column-fill: auto; */
+        /* column-fill: auto; */
     }
 
     h3 {
-        /* border-bottom: 1px solid #7A200D; */
+        border-bottom: 1px solid #7A200D;
         color: #7A200D;
         font-size: 21px;
         font-variant: small-caps;
@@ -80,11 +83,3 @@
         margin-bottom: 0;
     }
 </style>
-
-<div class="w-min">
-    <div class="bar"></div>
-    <div id="content-wrap">
-        <slot/>
-    </div>
-    <div class="bar"></div>
-</div>

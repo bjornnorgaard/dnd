@@ -5,78 +5,85 @@
     import PropertyLine from "$lib/components/statblock5e/PropertyLine.svelte";
     import PropertyBlock from "$lib/components/statblock5e/PropertyBlock.svelte";
     import AbilitiesBlock from "$lib/components/statblock5e/AbilitiesBlock.svelte";
+    import SectionHeading from "$lib/components/statblock5e/SectionHeading.svelte";
 </script>
 
-<div class="p-10">
+<div class="p-10 bg-blue-400">
+
     <Statblock>
         <CreatureHeading>
-            <h1>Animated Armor</h1>
-            <h2>Medium construct, unaligned</h2>
+            <svelte:fragment slot="title">Animated Armor</svelte:fragment>
+            <svelte:fragment slot="subtitle">Medium construct, unaligned</svelte:fragment>
         </CreatureHeading>
 
         <TopStats>
             <PropertyLine>
-                <h4>Armor Class</h4>
-                <p>18 (natural armor)</p>
+                <svelte:fragment slot="title">Armor Class</svelte:fragment>
+                <svelte:fragment slot="desc">18 (natural armor)</svelte:fragment>
             </PropertyLine>
             <PropertyLine>
-                <h4>Hit Points</h4>
-                <p>33 (6d8 + 6)</p>
+                <svelte:fragment slot="title">Hit Points</svelte:fragment>
+                <svelte:fragment slot="desc">33 (6d8 + 6)</svelte:fragment>
             </PropertyLine>
             <PropertyLine>
-                <h4>Speed</h4>
-                <p>25ft</p>
+                <svelte:fragment slot="title">Speed</svelte:fragment>
+                <svelte:fragment slot="desc">25ft</svelte:fragment>
             </PropertyLine>
 
-            <AbilitiesBlock str={14} dex={11} con={13} int={1} wis={3} cha={1}></AbilitiesBlock>
+            <AbilitiesBlock str={14} dex={11} con={13} int={1} wis={3} cha={1}/>
 
             <PropertyLine>
-                <h4>Damage Immunities</h4>
-                <p>poison, psychic</p>
+                <svelte:fragment slot="title">Damage Immunities</svelte:fragment>
+                <svelte:fragment slot="desc">poison, psychic</svelte:fragment>
             </PropertyLine>
             <PropertyLine>
-                <h4>Condition Immunities</h4>
-                <p>blinded, charmed, deafened, exhaustion, frightened, paralyzed,
-                   petrified, poisoned</p>
+                <svelte:fragment slot="title">Condition Immunities</svelte:fragment>
+                <svelte:fragment slot="desc">blinded, charmed, deafened, exhaustion, frightened, paralyzed, petrified, poisoned</svelte:fragment>
             </PropertyLine>
             <PropertyLine>
-                <h4>Senses</h4>
-                <p>blindsight 60 ft. (blind beyond this radius), passive Perception 6</p>
+                <svelte:fragment slot="title">Senses</svelte:fragment>
+                <svelte:fragment slot="desc">blindsight 60 ft. (blind beyond this radius), passive Perception&nbsp6
+                </svelte:fragment>
             </PropertyLine>
             <PropertyLine>
-                <h4>Languages</h4>
-                <p>—</p>
+                <svelte:fragment slot="title">Languages</svelte:fragment>
+                <svelte:fragment slot="desc">—</svelte:fragment>
             </PropertyLine>
             <PropertyLine>
-                <h4>Challenge</h4>
-                <p>1 (200 XP)</p>
+                <svelte:fragment slot="title">Challenge</svelte:fragment>
+                <svelte:fragment slot="desc">1 (200 XP)</svelte:fragment>
             </PropertyLine>
         </TopStats>
 
         <PropertyBlock>
-            <h4>Antimagic Susceptibility.</h4>
-            <p>The armor is incapacitated while in the area of an <i>antimagic
-                                                                     field</i>. If targeted by <i>dispel magic</i>, the armor must succeed
-               on a Constitution saving throw against the caster’s spell save DC or
-               fall unconscious for 1 minute.</p>
+            <svelte:fragment slot="title">Antimagic Susceptibility.</svelte:fragment>
+            <svelte:fragment slot="desc">
+                The armor is incapacitated while in the area of an <i>antimagic field</i>.
+                If targeted by <i>dispel magic</i>, the armor must succeed on a Constitution
+                saving throw against the caster’s spell save DC or fall unconscious for 1 minute.
+            </svelte:fragment>
         </PropertyBlock>
         <PropertyBlock>
-            <h4>False Appearance.</h4>
-            <p>While the armor remains motionless, it is indistinguishable from a
-               normal suit of armor.</p>
+            <svelte:fragment slot="title">False Appearance.</svelte:fragment>
+            <svelte:fragment slot="desc">
+                While the armor remains motionless, it is indistinguishable from a normal suit of armor.
+            </svelte:fragment>
         </PropertyBlock>
 
-        <h3>Actions</h3>
+        <SectionHeading>Actions</SectionHeading>
 
         <PropertyBlock>
-            <h4>Multiattack.</h4>
-            <p>The armor makes two melee attacks.</p>
+            <svelte:fragment slot="title">Multiattack.</svelte:fragment>
+            <svelte:fragment slot="desc">The armor makes two melee attacks.</svelte:fragment>
         </PropertyBlock>
 
         <PropertyBlock>
-            <h4>Slam.</h4>
-            <p><i>Melee Weapon Attack:</i> +4 to hit, reach 5 ft., one target.
-                <i>Hit:</i> 5 (1d6 + 2) bludgeoning damage.</p>
+            <svelte:fragment slot="title">Slam.</svelte:fragment>
+            <svelte:fragment slot="desc">
+                <i>Melee Weapon Attack:</i> +4 to hit, reach 5 ft., one target.
+                <i>Hit:</i> 5 (1d6 + 2) bludgeoning damage.
+            </svelte:fragment>
         </PropertyBlock>
     </Statblock>
+
 </div>

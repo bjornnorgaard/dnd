@@ -1,4 +1,4 @@
-<svg height="5" width="380">
+<svg height="5" width="400">
     <polyline points="0,0 400,2.5 0,5"/>
 </svg>
 
