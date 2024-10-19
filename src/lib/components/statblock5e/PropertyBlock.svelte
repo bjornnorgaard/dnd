@@ -2,6 +2,7 @@
     <h4>
         <slot name="title"/>
     </h4>
+
     <p>
         <slot name="desc"/>
     </p>

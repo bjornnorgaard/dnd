@@ -1,6 +1,7 @@
 <h1>
     <slot name="title"/>
 </h1>
+
 <h2>
     <slot name="subtitle"/>
 </h2>

@@ -1,8 +1,10 @@
 <div class="host">
     <div class="bar"></div>
+
     <div id="content-wrap">
         <slot/>
     </div>
+
     <div class="bar"></div>
 </div>
 
@@ -21,9 +23,8 @@
     }
 
     #content-wrap {
-        font-family: "Noto Sans", "Myriad Pro", Calibri, Helvetica, Arial,
-        sans-serif;
-        font-size: 13.5px;
+        font-family: "Noto Sans", "Myriad Pro", Calibri, Helvetica, Arial, sans-serif;
+        font-size: 14px;
         background: #FDF1DC;
         padding: 0.6em 0.6em 0.5em;
         border: 1px #DDD solid;
@@ -64,8 +65,7 @@
         font-variant: small-caps;
         font-weight: normal;
         letter-spacing: 1px;
-        margin: 0;
-        margin-bottom: 0.3em;
+        margin: 0 0 0.3em;
 
         break-inside: avoid-column;
         break-after: avoid-column;
