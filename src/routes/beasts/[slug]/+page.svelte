@@ -5,9 +5,9 @@
     import StatblockSection from "$lib/components/statblock/StatblockSection.svelte";
     import SpellCard from "$lib/components/SpellCard.svelte";
     import { appendSign, convertAttributeScoreToModifier } from "$lib/utils/modifiers";
-    import type { Spell } from "$lib/data/spell";
+    import type { Spell } from "$lib/types/spell";
 
-    export let data;
+    let { data } = $props();
 
     async function fetchSpells(url: string): Promise<Spell> {
         if (url.endsWith("/")) {
@@ -217,10 +217,7 @@
 
         <Accordion>
             <AccordionItem>
-                <svelte:fragment slot="summary">Debug</svelte:fragment>
-                <svelte:fragment slot="content">
-                    <pre>{JSON.stringify(data, null, 2)}</pre>
-                </svelte:fragment>
+                <pre>{JSON.stringify(data, null, 2)}</pre>
             </AccordionItem>
         </Accordion>
     </PageWrapper>

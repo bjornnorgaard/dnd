@@ -9,6 +9,8 @@
     import GlobalSearch from "$lib/components/GlobalSearch.svelte";
     import OpenGraph from "$lib/components/OpenGraph.svelte";
 
+    let { children } = $props();
+
     storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 
     inject({ mode: dev ? 'development' : 'production' });
@@ -23,7 +25,7 @@
     </div>
 
     <div class="w-full pb-32">
-        <slot/>
+        {@render children()}
     </div>
 
     <div class="fixed bottom-0 w-full md:hidden">

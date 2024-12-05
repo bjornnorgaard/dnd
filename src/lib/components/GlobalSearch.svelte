@@ -5,9 +5,9 @@
     import { globalSearch, type GlobalSearchState } from "$lib/stores/global-search";
     import { settings } from "$lib/stores/settings";
 
-    let query: string = "";
-    let dialog: HTMLDialogElement | null = null;
-    let results: AutocompleteOption<string>[] = [];
+    let query: string = $state("");
+    let dialog: HTMLDialogElement | null = $state(null);
+    let results: AutocompleteOption<string>[] = $state([]);
 
     onMount(() => {
         const unsub = globalSearch.subscribe((s: GlobalSearchState) => {
@@ -55,13 +55,13 @@
     }
 </script>
 
-<svelte:window on:keydown={onWindowKeydown}/>
+<svelte:window onkeydown={onWindowKeydown}/>
 
 <dialog bind:this={dialog} class="bg-transparent">
     <div class="fixed top-0 left-0 h-screen w-screen opacity-80 bg-surface-800"></div>
     <div class="fixed top-0 left-0 h-screen w-screen p-4" id="backdrop">
         <div class="mx-auto w-full max-w-xl rounded-2xl mt-[10vw] space-y-4 card variant-filled-surface">
-            <input type="search" placeholder="Search everything" bind:value={query} on:keydown={onInputKeydown} on:input={search} class="rounded-t-2xl rounded-b-none border-0 px-4 pt-3 text-4xl text-neutral-300 input">
+            <input type="search" placeholder="Search everything" bind:value={query} onkeydown={onInputKeydown} oninput={search} class="rounded-t-2xl rounded-b-none border-0 px-4 pt-3 text-4xl text-neutral-300 input">
             <Autocomplete options={results} on:selection={onSelection}/>
             <div class="flex gap-4 p-4 text-sm">
                 <span><kbd class="kbd">Escape</kbd> to close</span>

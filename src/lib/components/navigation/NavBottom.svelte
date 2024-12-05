@@ -24,11 +24,13 @@
         class="w-full bg-surface-100-800-token">
     {#each $routes as r}
         <TabAnchor href={r.route} selected={$page.url.pathname.includes(r.route) && r.route !== "/"}>
-            <svelte:fragment slot="lead">
-                <div class="flex justify-center">
-                    <svelte:component this={r.icon}/>
-                </div>
-            </svelte:fragment>
+            {#snippet lead()}
+                    
+                    <div class="flex justify-center">
+                        <r.icon/>
+                    </div>
+                
+                    {/snippet}
             <span>{r.label}</span>
         </TabAnchor>
     {/each}

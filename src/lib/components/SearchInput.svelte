@@ -1,15 +1,12 @@
 <script lang="ts">
     import { Search } from "lucide-svelte";
-    import { createEventDispatcher } from "svelte";
 
-    const dispatch = createEventDispatcher();
+    let { label, input } = $props();
 
-    export let label: string;
-
-    let query: string = "";
+    let query: string = $state("");
 
     function emitUpdate() {
-        dispatch("input", query);
+        input(query);
     }
 </script>
 
@@ -23,6 +20,6 @@
         <input type="search"
                placeholder="Search..."
                bind:value={query}
-               on:input={() => emitUpdate()}/>
+               oninput={() => emitUpdate()}/>
     </div>
 </div>

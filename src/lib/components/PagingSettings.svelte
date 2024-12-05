@@ -1,17 +1,14 @@
 <script lang="ts">
-    import { createEventDispatcher } from "svelte";
     import { ArrowLeft, ArrowRight } from "lucide-svelte";
 
-    const dispatch = createEventDispatcher();
-
-    export let count = 0;
+    let { count = $bindable(), update } = $props();
     let limitOptions = [ 5, 10, 20, 50 ];
-    let page = 0;
-    let limit = 10;
+    let page = $state(0);
+    let limit = $state(10);
 
     function emitUpdate(): void {
         const offset = Math.max(0, page * limit);
-        dispatch("update", { offset: offset, limit: limit });
+        update({ offset: offset, limit: limit });
     }
 
     function previous() {
@@ -32,18 +29,18 @@
 
 <div class="flex justify-between">
 
-    <select class="w-fit select" bind:value={limit} on:change={() => emitUpdate()}>
+    <select class="w-fit select" bind:value={limit} onchange={() => emitUpdate}>
         {#each limitOptions as o}
             <option value={o}>{o} Items</option>
         {/each}
     </select>
 
     <div class="btn-group variant-ghost ">
-        <button class="btn btn-sm" on:click={previous} disabled={page === 0}>
+        <button class="btn btn-sm" onclick={previous} disabled={page === 0}>
             <ArrowLeft/>
         </button>
-        <button class="btn btn-sm" on:click={reset}>Page {page + 1}</button>
-        <button class="btn btn-sm" on:click={next} disabled={count < limit}>
+        <button class="btn btn-sm" onclick={reset}>Page {page + 1}</button>
+        <button class="btn btn-sm" onclick={next} disabled={count < limit}>
             <ArrowRight/>
         </button>
     </div>

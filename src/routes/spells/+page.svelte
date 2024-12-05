@@ -1,7 +1,6 @@
 <script lang="ts">
     import PageWrapper from "$lib/components/PageWrapper.svelte";
     import PageSection from "$lib/components/PageSection.svelte";
-    import type { Spell } from "$lib/data/spell";
     import { onMount } from "svelte";
     import SearchInput from "$lib/components/SearchInput.svelte";
     import Table from "$lib/components/table/Table.svelte";
@@ -10,11 +9,12 @@
     import { routes } from "$lib/components/navigation/routes";
     import PageSettings from "$lib/components/PagingSettings.svelte";
     import { DEFAULT_PAGE_SIZE } from "$lib/constants/paging";
+    import type { Spell } from "$lib/types/spell";
 
     let query = "";
     let offset = 0;
     let limit = DEFAULT_PAGE_SIZE;
-    let spells: Spell[] = [];
+    let spells: Spell[] = $state([]);
 
     onMount(async () => await searchSpells());
 
@@ -38,8 +38,8 @@
 
 <PageWrapper title="Spells" desc="Search and view spell details">
     <PageSection>
-        <SearchInput label="Search Spells" on:input={async (e) => await onQueryUpdated(e.detail)}/>
-        <PageSettings on:update={onPageUpdated} bind:count={spells.length}/>
+        <SearchInput label="Search Spells" input={async (e: string) => await onQueryUpdated(e)}/>
+        <PageSettings update={onPageUpdated} bind:count={spells.length}/>
         <Table>
             <TableHead>
                 <th class="table-cell-fit">Level</th>

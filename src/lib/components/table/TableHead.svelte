@@ -1,5 +1,10 @@
+<script>
+    /** @type {{children?: import('svelte').Snippet}} */
+    let { children } = $props();
+</script>
+
 <thead>
 <tr>
-    <slot/>
+    {@render children?.()}
 </tr>
 </thead>
