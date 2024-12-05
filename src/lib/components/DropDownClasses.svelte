@@ -1,23 +1,20 @@
 <script lang="ts">
-    import { createEventDispatcher } from "svelte";
     import { Class } from "$lib/constants/classes";
 
-    const dispatch = createEventDispatcher();
-
-    let selectedClass = "Classes";
+    let selectedClass = $state("Classes");
     let classes = [ "Classes", ...Object.values(Class) ];
 
-    function emitUpdate(): void {
-        dispatch("update", { class: selectedClass });
+    const { update } = $props();
+
+    function emitUpdate(e: Event): void {
+        update(selectedClass);
     }
 </script>
 
 <div class="flex justify-between">
-
-    <select class="w-fit select" bind:value={selectedClass} on:change={() => emitUpdate()}>
+    <select class="w-fit select" bind:value={selectedClass} onchange={emitUpdate}>
         {#each classes as o}
             <option value={o}>{o}</option>
         {/each}
     </select>
-
 </div>

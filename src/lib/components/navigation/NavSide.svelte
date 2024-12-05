@@ -14,17 +14,15 @@
     });
 </script>
 
-<div class="h-full border-r-2 border-surface-900 print:hidden">
+<div class="print:hidden h-full border-r-2 border-surface-900">
     <AppRail>
-        <svelte:fragment slot="lead">
-            <NavSearchButton/>
-        </svelte:fragment>
+        <NavSearchButton/>
 
         {#each $routes as r}
             <AppRailAnchor href={r.route} title={r.label} selected={$page.url.pathname.includes(r.route) && r.route !== "/"}>
-                <svelte:fragment slot="lead">
+                <div class="flex justify-center">
                     <svelte:component this={r.icon}/>
-                </svelte:fragment>
+                </div>
                 <span>{r.label}</span>
             </AppRailAnchor>
         {/each}

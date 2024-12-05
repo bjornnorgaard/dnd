@@ -13,8 +13,5 @@ export const routes = {
     spells: () => "/spells",
     spells_slug: (slug: string) => `/spells/${slug}`,
 
-    spellbook: () => "/spellbook",
-    spellbook_printable: (index: number) => `/spellbook/printable/${index}`,
-
     settings: () => "/settings",
 }

@@ -1,7 +1,6 @@
 <script lang="ts">
     import PageWrapper from "$lib/components/PageWrapper.svelte";
     import PageSection from "$lib/components/PageSection.svelte";
-    import type { Creature } from "$lib/data/creature";
     import { onMount } from "svelte";
     import SearchInput from "$lib/components/SearchInput.svelte";
     import Table from "$lib/components/table/Table.svelte";
@@ -9,8 +8,9 @@
     import TableBody from "$lib/components/table/TableBody.svelte";
     import { routes } from "$lib/components/navigation/routes";
     import PageSettings from "$lib/components/PagingSettings.svelte";
+    import type { Creature } from "$lib/types/creature";
 
-    let creatures: Creature[] = [];
+    let creatures: Creature[] = $state([]);
     let query = "";
     let limit = 10;
     let offset = 0;
@@ -36,8 +36,8 @@
 
 <PageWrapper title="Creatures" desc="Search and view creatures">
     <PageSection>
-        <SearchInput label="Search Creatures" on:input={async (e) => await onQueryUpdated(e.detail)}/>
-        <PageSettings on:update={onPageUpdated} bind:count={creatures.length}/>
+        <SearchInput label="Search Creatures" input={async (e: string) => await onQueryUpdated(e)}/>
+        <PageSettings update={onPageUpdated} bind:count={creatures.length}/>
         <Table>
             <TableHead>
                 <th>CR</th>

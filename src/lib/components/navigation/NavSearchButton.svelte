@@ -9,8 +9,10 @@
 </script>
 
 <AppRailAnchor class="cursor-pointer" on:click={() => search()}>
-    <svelte:fragment slot="lead">
-        <Search/>
-    </svelte:fragment>
+    {#snippet lead()}
+    
+            <Search/>
+        
+    {/snippet}
     <kbd class="kbd">⌘+K</kbd>
 </AppRailAnchor>

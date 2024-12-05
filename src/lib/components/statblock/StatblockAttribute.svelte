@@ -1,8 +1,12 @@
 <script lang="ts">
     import { convertAttributeScoreToModifier } from "$lib/utils/modifiers";
 
-    export let label: string;
-    export let value: number;
+    interface Props {
+        label: string;
+        value: number;
+    }
+
+    let { label, value }: Props = $props();
 
 </script>
 

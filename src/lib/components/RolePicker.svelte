@@ -13,7 +13,7 @@
             <button class="btn"
                     class:variant-soft-primary={o.value !== $settings.role}
                     class:variant-filled-primary={o.value === $settings.role}
-                    on:click={() => $settings.role = o.value}>
+                    onclick={() => $settings.role = o.value}>
                 {o.label}
             </button>
         {/each}

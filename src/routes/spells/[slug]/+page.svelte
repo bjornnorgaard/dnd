@@ -3,7 +3,7 @@
     import { Accordion, AccordionItem } from "@skeletonlabs/skeleton";
     import StatblockDivider from "$lib/components/statblock/StatblockDivider.svelte";
 
-    export let data;
+    let { data } = $props();
 </script>
 
 <PageWrapper title={data.spell.name} desc={`${data.spell.level} ${data.spell.school.toLowerCase()} ${data.spell.can_be_cast_as_ritual ? "(ritual)" : ""}`}>
@@ -32,10 +32,7 @@
 
     <Accordion>
         <AccordionItem>
-            <svelte:fragment slot="summary">Debug</svelte:fragment>
-            <svelte:fragment slot="content">
-                <pre>{JSON.stringify(data, null, 2)}</pre>
-            </svelte:fragment>
+            <pre>{JSON.stringify(data, null, 2)}</pre>
         </AccordionItem>
     </Accordion>
 </PageWrapper>

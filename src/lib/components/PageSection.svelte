@@ -1,6 +1,5 @@
 <script lang="ts">
-    export let title: string = "";
-    export let desc: string = "";
+    let { title = "", desc = "", children }= $props();
 </script>
 
 <section class="py-4 space-y-4">
@@ -12,5 +11,5 @@
             {/if}
         </hgroup>
     {/if}
-    <slot/>
+    {@render children?.()}
 </section>

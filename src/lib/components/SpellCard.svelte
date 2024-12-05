@@ -1,21 +1,17 @@
 <script lang="ts">
-    import type { Spell } from "$lib/data/spell";
     import { CircleX } from "lucide-svelte";
-    import { createEventDispatcher } from "svelte";
 
-    export let spell: Spell;
-
-    const dispatcher = createEventDispatcher();
+    let { spell, remove = null } = $props();
 
     function crossClicked() {
-        dispatcher("remove", spell);
+        remove(spell);
     }
 </script>
 
 <div>
     <div class="flex items-center w-full justify-between">
         <p><b class="text-lg text-primary-500">{spell.name}</b></p>
-        <button class="btn-icon btn-icon-sm hover:text-error-500" on:click={() => crossClicked()}>
+        <button class="btn-icon btn-icon-sm hover:text-error-500" onclick={() => crossClicked()}>
             <CircleX/>
         </button>
     </div>
