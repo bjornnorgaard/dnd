@@ -1,6 +1,6 @@
 import { json } from "@sveltejs/kit";
-import { searchCreatures } from "$lib/search/index-builder";
 import type { Creature } from "$lib/types/creature";
+import { searchCreatures } from "$lib/search/creature-search";
 
 export const GET = ({ url }) => {
     const query = url.searchParams.get("query") ?? "a";
